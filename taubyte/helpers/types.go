@@ -34,10 +34,13 @@ type Methods interface {
 	WriteStringSlice(module common.Module, ptr uint32, value []string) errno.Error
 	WriteUint32SliceSize(module common.Module, ptr uint32, value []uint32) errno.Error
 	WriteUint32Slice(module common.Module, ptr uint32, value []uint32) errno.Error
-	Read64Le(module common.Module, ptr uint32) (uint64, errno.Error)
+	ReadUint64Le(module common.Module, ptr uint32) (uint64, errno.Error)
+	ReadUint64Slice(module common.Module, ptr, len uint32) ([]uint64, errno.Error)
 	WriteUint32Le(module common.Module, ptr, toWrite uint32) errno.Error
 	WriteUint64Le(module common.Module, ptr uint32, toWrite uint64) errno.Error
 	WriteUint64LeInterface(module common.Module, ptr uint32, toWrite interface{}) errno.Error
+	WriteUint64SliceSize(module common.Module, ptr uint32, value []uint64) errno.Error
+	WriteUint64Slice(module common.Module, ptr uint32, toWrite []uint64) errno.Error
 	WriteBool(module common.Module, ptr uint32, toWrite bool) errno.Error
 	ReadBool(module common.Module, val uint32) (bool, errno.Error)
 	SafeWriteBytes(module common.Module, ptr uint32, size uint32, value []byte) errno.Error

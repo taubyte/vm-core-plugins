@@ -86,7 +86,7 @@ func (f *Factory) getTransaction(module common.Module, clientId, blockIdPtr, con
 	}
 
 	if blockIdPtr != 0 {
-		blockId, err := f.Read64Le(module, blockIdPtr)
+		blockId, err := f.ReadUint64Le(module, blockIdPtr)
 		if err != 0 {
 			return nil, err
 		}
@@ -114,7 +114,7 @@ func (f *Factory) W_ethGetTransactionFromBlockByHash(
 	idPtr,
 	hashPtr uint32,
 ) errno.Error {
-	blockId, err := f.Read64Le(module, blockIdPtr)
+	blockId, err := f.ReadUint64Le(module, blockIdPtr)
 	if err != 0 {
 		return err
 	}
@@ -153,7 +153,7 @@ func (f *Factory) W_ethGetTransactionsFromBlockSize(
 	blockIdPtr,
 	sizePtr, arrSizePtr uint32,
 ) errno.Error {
-	blockId, err := f.Read64Le(module, blockIdPtr)
+	blockId, err := f.ReadUint64Le(module, blockIdPtr)
 	if err != 0 {
 		return err
 	}
@@ -190,7 +190,7 @@ func (f *Factory) W_ethGetTransactionsFromBlock(
 	blockIdPtr,
 	bufPtr uint32,
 ) errno.Error {
-	blockId, err := f.Read64Le(module, blockIdPtr)
+	blockId, err := f.ReadUint64Le(module, blockIdPtr)
 	if err != 0 {
 		return err
 	}

@@ -85,7 +85,7 @@ func (f *Factory) W_ethBlockNumberFromIdSize(
 	blockIdPtr,
 	lenPtr uint32,
 ) errno.Error {
-	blockId, err := f.Read64Le(module, blockIdPtr)
+	blockId, err := f.ReadUint64Le(module, blockIdPtr)
 	if err != 0 {
 		return err
 	}
@@ -105,7 +105,7 @@ func (f *Factory) W_ethBlockNumberFromId(
 	blockIdPtr,
 	bufPtr uint32,
 ) errno.Error {
-	blockId, err := f.Read64Le(module, blockIdPtr)
+	blockId, err := f.ReadUint64Le(module, blockIdPtr)
 	if err != 0 {
 		return err
 	}

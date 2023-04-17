@@ -39,7 +39,7 @@ func (m *methods) WriteUint64LeInterface(module common.Module, ptr uint32, toWri
 	return 0
 }
 
-func (m *methods) Read64Le(module common.Module, ptr uint32) (uint64, errno.Error) {
+func (m *methods) ReadUint64Le(module common.Module, ptr uint32) (uint64, errno.Error) {
 	value, ok := module.Memory().ReadUint64Le(ptr)
 	if !ok {
 		return 0, errno.ErrorAddressOutOfMemory
