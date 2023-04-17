@@ -55,7 +55,7 @@ func (f *Factory) W_newHttpRequest(ctx context.Context, module common.Module,
 		return err
 	}
 
-	return f.WriteLe(module, reqIdPtr, reqId)
+	return f.WriteUint32Le(module, reqIdPtr, reqId)
 }
 
 func (f *Factory) W_setHttpRequestURL(ctx context.Context, module common.Module,

@@ -47,5 +47,5 @@ func (f *Factory) W_getOrCreateGlobalValueSize(
 		return errno.ErrorDatabaseKeyNotFound
 	}
 
-	return f.WriteLe(module, valueSizePtr, uint32(len(value)))
+	return f.WriteUint32Le(module, valueSizePtr, uint32(len(value)))
 }

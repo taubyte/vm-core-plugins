@@ -11,7 +11,7 @@ import (
 func (f *Factory) W_dnsNewResolver(ctx context.Context, module common.Module,
 	resolverIdPtr uint32,
 ) errno.Error {
-	return f.WriteLe(module, resolverIdPtr, f.generateResolver())
+	return f.WriteUint32Le(module, resolverIdPtr, f.generateResolver())
 }
 
 func (f *Factory) W_dnsRerouteResolver(ctx context.Context, module common.Module,

@@ -21,7 +21,7 @@ func (f *Factory) W_cryptoRead(
 		return errno.ErrorRandRead
 	}
 
-	if err := f.Write64Le(module, readPtr, uint64(n)); err != 0 {
+	if err := f.WriteUint64Le(module, readPtr, uint64(n)); err != 0 {
 		return err
 	}
 

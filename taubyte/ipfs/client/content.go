@@ -27,7 +27,7 @@ func (f *Factory) W_ipfsNewContent(ctx context.Context, module common.Module,
 	}
 
 	content := client.generateContent(contentId, cid.Cid{}, newFile)
-	return f.WriteLe(module, contentIdPtr, content.id)
+	return f.WriteUint32Le(module, contentIdPtr, content.id)
 }
 
 func (f *Factory) W_ipfsOpenFile(ctx context.Context, module common.Module,
@@ -53,7 +53,7 @@ func (f *Factory) W_ipfsOpenFile(ctx context.Context, module common.Module,
 	}
 
 	content := client.generateContent(client.generateContentId(), _cid, file)
-	return f.WriteLe(module, contentIdPtr, content.id)
+	return f.WriteUint32Le(module, contentIdPtr, content.id)
 }
 
 func (f *Factory) W_ipfsCloseFile(ctx context.Context, module common.Module,
@@ -119,7 +119,7 @@ func (f *Factory) W_ipfsWriteFile(ctx context.Context, module common.Module,
 		return errno.ErrorWritingFile
 	}
 
-	return f.WriteLe(module, writePtr, uint32(written))
+	return f.WriteUint32Le(module, writePtr, uint32(written))
 }
 
 func (f *Factory) W_ipfsReadFile(ctx context.Context, module common.Module,
@@ -185,5 +185,5 @@ func (f *Factory) W_ipfsSeekFile(ctx context.Context, module common.Module,
 		return errno.ErrorSeekingFile
 	}
 
-	return f.WriteLe(module, offsetPtr, uint32(_offset))
+	return f.WriteUint32Le(module, offsetPtr, uint32(_offset))
 }

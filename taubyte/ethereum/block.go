@@ -56,7 +56,7 @@ func (f *Factory) W_ethBlockByNumber(
 	c.blocks[b.Id] = b
 	c.blocksLock.Unlock()
 
-	return f.Write64Le(module, blockIdPtr, b.Id)
+	return f.WriteUint64Le(module, blockIdPtr, b.Id)
 }
 
 func (f *Factory) W_ethCurrentBlockNumber(
@@ -75,7 +75,7 @@ func (f *Factory) W_ethCurrentBlockNumber(
 		return errno.ErrorEthereumBlockNotFound
 	}
 
-	return f.Write64Le(module, blockNumberPtr, blockNumber)
+	return f.WriteUint64Le(module, blockNumberPtr, blockNumber)
 }
 
 func (f *Factory) W_ethBlockNumberFromIdSize(

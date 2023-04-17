@@ -86,7 +86,7 @@ func (f *Factory) W_storageAddFile(ctx context.Context, module common.Module,
 		return errno.ErrorAddFileFailed
 	}
 
-	return f.WriteLe(module, versionPtr, uint32(version))
+	return f.WriteUint32Le(module, versionPtr, uint32(version))
 }
 
 func (f *Factory) W_storageGetFile(ctx context.Context,
@@ -110,7 +110,7 @@ func (f *Factory) W_storageGetFile(ctx context.Context,
 		id: storage.generateFileId(),
 	}
 
-	err = f.WriteLe(module, fileIdPtr, file.id)
+	err = f.WriteUint32Le(module, fileIdPtr, file.id)
 	if err != 0 {
 		return
 	}

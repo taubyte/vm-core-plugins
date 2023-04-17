@@ -64,3 +64,9 @@ func (m *methods) WriteUint32Slice(module common.Module, ptr uint32, value []uin
 
 	return m.WriteBytes(module, ptr, encoded)
 }
+
+// /****************************************** Uint32 SLICES ****************************************/
+
+// func (m *methods) WriteUint64SliceSize(module common.Module, ptr uint32, value []uint64) errno.Error {
+
+// }

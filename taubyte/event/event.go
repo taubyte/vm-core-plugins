@@ -108,5 +108,5 @@ func (f *Factory) W_getEventType(ctx context.Context, module vmCommon.Module, ev
 		return
 	}
 
-	f.WriteLe(module, typeIdPtr, e.TypeU64())
+	f.WriteUint32Le(module, typeIdPtr, e.TypeU64())
 }

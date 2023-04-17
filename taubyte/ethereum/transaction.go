@@ -143,7 +143,7 @@ func (f *Factory) W_ethGetTransactionFromBlockByHash(
 	}
 	block.transactionsLock.Unlock()
 
-	return f.WriteLe(module, idPtr, id)
+	return f.WriteUint32Le(module, idPtr, id)
 }
 
 func (f *Factory) W_ethGetTransactionsFromBlockSize(
@@ -175,7 +175,7 @@ func (f *Factory) W_ethGetTransactionsFromBlockSize(
 		hashList = append(hashList, t.Id)
 	}
 
-	err = f.WriteLe(module, arrSizePtr, uint32(len(hashList)))
+	err = f.WriteUint32Le(module, arrSizePtr, uint32(len(hashList)))
 	if err != 0 {
 		return err
 	}
@@ -306,7 +306,7 @@ func (f *Factory) W_ethGetTransactionMethodUint64(
 		return err0
 	}
 
-	return f.Write64LeInterface(module, numPtr, valueIface)
+	return f.WriteUint64LeInterface(module, numPtr, valueIface)
 
 }
 

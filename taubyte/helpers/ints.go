@@ -7,7 +7,7 @@ import (
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (m *methods) WriteLe(module common.Module, ptr, toWrite uint32) errno.Error {
+func (m *methods) WriteUint32Le(module common.Module, ptr, toWrite uint32) errno.Error {
 	written := module.Memory().WriteUint32Le(ptr, toWrite)
 	if !written {
 		return errno.ErrorMemoryWriteFailed
@@ -16,7 +16,7 @@ func (m *methods) WriteLe(module common.Module, ptr, toWrite uint32) errno.Error
 	return 0
 }
 
-func (m *methods) Write64Le(module common.Module, ptr uint32, toWrite uint64) errno.Error {
+func (m *methods) WriteUint64Le(module common.Module, ptr uint32, toWrite uint64) errno.Error {
 	written := module.Memory().WriteUint64Le(ptr, toWrite)
 	if !written {
 		return errno.ErrorMemoryWriteFailed
@@ -25,7 +25,7 @@ func (m *methods) Write64Le(module common.Module, ptr uint32, toWrite uint64) er
 	return 0
 }
 
-func (m *methods) Write64LeInterface(module common.Module, ptr uint32, toWrite interface{}) errno.Error {
+func (m *methods) WriteUint64LeInterface(module common.Module, ptr uint32, toWrite interface{}) errno.Error {
 	value, ok := toWrite.(uint64)
 	if !ok {
 		value = 0

@@ -15,7 +15,7 @@ func (m *methods) WriteBool(
 		_value = 1
 	}
 
-	return m.WriteLe(module, ptr, _value)
+	return m.WriteUint32Le(module, ptr, _value)
 }
 
 func (m *methods) ReadBool(

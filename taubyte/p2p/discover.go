@@ -25,7 +25,7 @@ func (f *Factory) W_discoverPeersSize(ctx context.Context, module common.Module,
 		bytesPeers[idx] = peer.ToCid(p.ID).Bytes()
 	}
 
-	if err0 := f.WriteLe(module, discoverIdPtr, f.generateDiscovery(bytesPeers)); err0 != 0 {
+	if err0 := f.WriteUint32Le(module, discoverIdPtr, f.generateDiscovery(bytesPeers)); err0 != 0 {
 		return err0
 	}
 

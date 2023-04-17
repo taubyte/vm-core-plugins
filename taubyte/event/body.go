@@ -21,7 +21,7 @@ func (f *Factory) W_readHttpEventBody(ctx context.Context, module common.Module,
 		return errno.ErrorHttpReadBody
 	}
 
-	err = f.WriteLe(module, countPtr, uint32(n))
+	err = f.WriteUint32Le(module, countPtr, uint32(n))
 	if err != 0 {
 		return
 	}
@@ -65,9 +65,9 @@ func (f *Factory) W_eventHttpWrite(ctx context.Context, module common.Module, ev
 
 	n, err0 := w.Write(buf)
 	if err0 != nil {
-		f.WriteLe(module, wroteN, uint32(n))
+		f.WriteUint32Le(module, wroteN, uint32(n))
 		return errno.ErrorHttpWrite
 	}
 
-	return f.WriteLe(module, wroteN, uint32(n))
+	return f.WriteUint32Le(module, wroteN, uint32(n))
 }

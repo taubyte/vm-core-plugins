@@ -49,7 +49,7 @@ func (f *Factory) W_memoryViewNew(
 	f.memoryViews[view.id] = &view
 	f.mvLock.Unlock()
 
-	return f.WriteLe(module, idPtr, view.id)
+	return f.WriteUint32Le(module, idPtr, view.id)
 }
 
 func (f *Factory) W_memoryViewOpen(
@@ -62,7 +62,7 @@ func (f *Factory) W_memoryViewOpen(
 	if mv, err := f.getMemoryView(id); err != 0 {
 		return err
 	} else {
-		if err = f.WriteLe(module, sizePtr, mv.size); err != 0 {
+		if err = f.WriteUint32Le(module, sizePtr, mv.size); err != 0 {
 			return err
 		}
 
@@ -102,7 +102,7 @@ func (f *Factory) W_memoryViewRead(
 		return err0
 	}
 
-	if err0 = f.WriteLe(module, nPtr, count); err0 != 0 {
+	if err0 = f.WriteUint32Le(module, nPtr, count); err0 != 0 {
 		return err0
 	}
 

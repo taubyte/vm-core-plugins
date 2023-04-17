@@ -26,7 +26,7 @@ func (f *Factory) W_storageNewContent(ctx context.Context, module common.Module,
 	}
 
 	f.contents[f.contentIdToGrab] = &content{id: f.contentIdToGrab, cid: cid.Cid{}, file: newFile}
-	return f.WriteLe(module, contentIdPtr, f.contentIdToGrab)
+	return f.WriteUint32Le(module, contentIdPtr, f.contentIdToGrab)
 }
 
 func (f *Factory) W_storageOpenCid(ctx context.Context, module common.Module,
@@ -60,7 +60,7 @@ func (f *Factory) W_storageOpenCid(ctx context.Context, module common.Module,
 	}()
 
 	f.contents[f.contentIdToGrab] = &content{id: f.contentIdToGrab, cid: cid, file: newFile}
-	return f.WriteLe(module, contentIdPtr, f.contentIdToGrab)
+	return f.WriteUint32Le(module, contentIdPtr, f.contentIdToGrab)
 }
 
 func (f *Factory) W_contentCloseFile(ctx context.Context,
@@ -112,7 +112,7 @@ func (f *Factory) W_contentWriteFile(ctx context.Context, module common.Module,
 		return errno.ErrorWritingFile
 	}
 
-	return f.WriteLe(module, writePtr, uint32(written))
+	return f.WriteUint32Le(module, writePtr, uint32(written))
 }
 
 func (f *Factory) W_contentReadFile(ctx context.Context, module common.Module,
@@ -175,5 +175,5 @@ func (f *Factory) W_contentSeekFile(ctx context.Context, module common.Module,
 		return errno.ErrorSeekingFile
 	}
 
-	return f.WriteLe(module, offsetPtr, uint32(_offset))
+	return f.WriteUint32Le(module, offsetPtr, uint32(_offset))
 }

@@ -33,5 +33,5 @@ func (f *Factory) W_newDatabase(ctx context.Context,
 
 	database := f.createDatabasePointer(_database)
 
-	return f.WriteLe(module, idPtr, uint32(database.Id))
+	return f.WriteUint32Le(module, idPtr, uint32(database.Id))
 }

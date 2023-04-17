@@ -74,7 +74,7 @@ func (f *Factory) W_newCommand(
 	defer f.commandsLock.Unlock()
 	f.commands[_cmd.Id] = _cmd
 
-	return f.WriteLe(module, commandIdPtr, _cmd.Id)
+	return f.WriteUint32Le(module, commandIdPtr, _cmd.Id)
 }
 
 func (f *Factory) W_listenToProtocolSize(ctx context.Context, module common.Module,

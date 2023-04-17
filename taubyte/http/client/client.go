@@ -31,5 +31,5 @@ func (f *Factory) W_newHttpClient(ctx context.Context, module common.Module,
 	defer f.clientsLock.Unlock()
 	f.clients[c.Id] = c
 
-	return f.WriteLe(module, clientIdPtr, c.Id)
+	return f.WriteUint32Le(module, clientIdPtr, c.Id)
 }

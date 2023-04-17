@@ -24,7 +24,7 @@ func (m *methods) WriteBytesSize(
 	ptr uint32,
 	data []byte,
 ) errno.Error {
-	return m.WriteLe(module, ptr, uint32(len(data)))
+	return m.WriteUint32Le(module, ptr, uint32(len(data)))
 }
 
 func (m *methods) WriteBytes(
@@ -50,7 +50,7 @@ func (m *methods) WriteBytesInterfaceSize(
 		return errno.ErrorByteConversionFailed
 	}
 
-	return m.WriteLe(module, ptr, uint32(len(data)))
+	return m.WriteUint32Le(module, ptr, uint32(len(data)))
 }
 
 func (m *methods) WriteBytesInterface(
@@ -111,7 +111,7 @@ func (m *methods) WriteBytesConvertibleSize(
 	ptr uint32,
 	value ByteConvertible,
 ) errno.Error {
-	return m.WriteLe(module, ptr, uint32(len(checkNilConvertible(value))))
+	return m.WriteUint32Le(module, ptr, uint32(len(checkNilConvertible(value))))
 }
 
 func (m *methods) WriteBytesConvertible(

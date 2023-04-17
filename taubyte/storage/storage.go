@@ -35,7 +35,7 @@ func (f *Factory) W_storageGet(ctx context.Context,
 
 	_storage := f.createStoragePointer(storage)
 
-	return f.WriteLe(module, idPtr, uint32(_storage.id))
+	return f.WriteUint32Le(module, idPtr, uint32(_storage.id))
 }
 
 func (f *Factory) W_storageListFilesSize(ctx context.Context, module common.Module,

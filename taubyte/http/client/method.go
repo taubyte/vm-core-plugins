@@ -42,5 +42,5 @@ func (f *Factory) W_getHttpRequestMethod(ctx context.Context, module common.Modu
 		return errno.ErrorInvalidMethod
 	}
 
-	return f.WriteLe(module, methodPtr, method)
+	return f.WriteUint32Le(module, methodPtr, method)
 }

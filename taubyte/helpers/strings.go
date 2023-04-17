@@ -15,7 +15,7 @@ func (m *methods) ReadString(module common.Module, ptr, len uint32) (string, err
 }
 
 func (m *methods) WriteStringSize(module common.Module, ptr uint32, data string) errno.Error {
-	return m.WriteLe(module, ptr, uint32(len(data)))
+	return m.WriteUint32Le(module, ptr, uint32(len(data)))
 }
 
 func (m *methods) WriteString(module common.Module, ptr uint32, value string,

@@ -3,6 +3,9 @@ module github.com/taubyte/vm-plugins
 go 1.19
 
 replace github.com/taubyte/vm => ../../github/vm
+replace github.com/taubyte/go-sdk => ../go-sdk
+replace github.com/taubyte/go-sdk-symbols => ../go-sdk-symbols
+
 
 require github.com/taubyte/go-interfaces v0.0.1
 

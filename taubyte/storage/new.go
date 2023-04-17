@@ -31,5 +31,5 @@ func (f *Factory) W_storageNew(ctx context.Context, module common.Module,
 
 	_storage := f.createStoragePointer(storage)
 
-	return f.WriteLe(module, idPtr, uint32(_storage.id))
+	return f.WriteUint32Le(module, idPtr, uint32(_storage.id))
 }

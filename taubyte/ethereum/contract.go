@@ -152,7 +152,7 @@ func (f *Factory) W_ethDeployContract(
 		return err0
 	}
 
-	if err0 := f.WriteLe(module, transactionIdPtr, tx.Id); err0 != 0 {
+	if err0 := f.WriteUint32Le(module, transactionIdPtr, tx.Id); err0 != 0 {
 		return err0
 	}
 
@@ -199,7 +199,7 @@ func (f *Factory) handleBoundContractSize(module common.Module, contractIdPtr, m
 		return nil, err
 	}
 
-	if err := f.WriteLe(module, contractIdPtr, c.Id); err != 0 {
+	if err := f.WriteUint32Le(module, contractIdPtr, c.Id); err != 0 {
 		return nil, err
 	}
 
@@ -284,7 +284,7 @@ func (f *Factory) W_ethTransactContract(
 		Id:          contract.generateTransactionId(),
 	}
 
-	if err0 := f.WriteLe(module, transactionIdPtr, tx.Id); err0 != 0 {
+	if err0 := f.WriteUint32Le(module, transactionIdPtr, tx.Id); err0 != 0 {
 		return err0
 	}
 

@@ -38,7 +38,7 @@ func (f *Factory) W_getEventId(ctx context.Context, module vm.Module, resourceId
 		return err
 	}
 
-	return f.WriteLe(module, eventIdPtr, event.Id)
+	return f.WriteUint32Le(module, eventIdPtr, event.Id)
 }
 
 func (f *Factory) W_getResourceType(ctx context.Context, module vm.Module, resourceId uint32, typePtr uint32) errno.Error {
@@ -47,5 +47,5 @@ func (f *Factory) W_getResourceType(ctx context.Context, module vm.Module, resou
 		return err
 	}
 
-	return f.WriteLe(module, typePtr, resource.Caller.Type())
+	return f.WriteUint32Le(module, typePtr, resource.Caller.Type())
 }

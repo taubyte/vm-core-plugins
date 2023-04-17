@@ -42,7 +42,7 @@ func (f *Factory) W_getGlobalValueSize(
 		return errno.ErrorDatabaseGetFailed
 	}
 
-	return f.WriteLe(module, valueSizePtr, uint32(len(value)))
+	return f.WriteUint32Le(module, valueSizePtr, uint32(len(value)))
 }
 
 func (f *Factory) W_getGlobalValue(
