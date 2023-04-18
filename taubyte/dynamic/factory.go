@@ -7,8 +7,8 @@ import (
 
 func New(i vm.Instance, helper helpers.Methods) *Factory {
 	return &Factory{
-		parent:  i,
-		ctx:     i.Context().Context(),
-		Methods: helper,
+		instance: i,
+		ctx:      i.Context().Context(),
+		Methods:  helper,
 	}
 }
