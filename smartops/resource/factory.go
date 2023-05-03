@@ -1,8 +1,6 @@
 package resource
 
 import (
-	"context"
-
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/smartops/common"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
@@ -27,8 +25,4 @@ func (f *Factory) Name() string {
 func (f *Factory) Close() error {
 	f.resources = nil
 	return nil
-}
-
-func (f *Factory) Context() context.Context {
-	return f.ctx
 }

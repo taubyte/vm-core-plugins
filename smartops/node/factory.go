@@ -1,8 +1,6 @@
 package node
 
 import (
-	"context"
-
 	smartOpIface "github.com/taubyte/go-interfaces/services/substrate/smartops"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
@@ -25,8 +23,4 @@ func (f *Factory) Name() string {
 
 func (f *Factory) Close() error {
 	return nil
-}
-
-func (f *Factory) Context() context.Context {
-	return f.ctx
 }

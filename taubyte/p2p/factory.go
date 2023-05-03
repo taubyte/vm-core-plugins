@@ -1,8 +1,6 @@
 package p2p
 
 import (
-	"context"
-
 	p2pIface "github.com/taubyte/go-interfaces/services/substrate/p2p"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
@@ -28,10 +26,6 @@ func (f *Factory) Close() error {
 		stream.Close()
 	}
 	return nil
-}
-
-func (f *Factory) Context() context.Context {
-	return f.ctx
 }
 
 func (f *Factory) Load(hm vm.HostModule) (err error) {

@@ -1,8 +1,6 @@
 package client
 
 import (
-	"context"
-
 	dbIface "github.com/taubyte/go-interfaces/services/substrate/database"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
@@ -30,10 +28,6 @@ func (f *Factory) Close() error {
 	}
 
 	return nil
-}
-
-func (f *Factory) Context() context.Context {
-	return f.ctx
 }
 
 func (f *Factory) Load(hm vm.HostModule) (err error) {

@@ -5,14 +5,13 @@ import (
 	"sync"
 
 	"github.com/taubyte/go-interfaces/services/substrate/p2p"
-	p2pIface "github.com/taubyte/go-interfaces/services/substrate/p2p"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
 )
 
 type Factory struct {
 	helpers.Methods
-	p2pNode          p2pIface.Service
+	p2pNode          p2p.Service
 	parent           vm.Instance
 	ctx              context.Context
 	commandsLock     sync.RWMutex
@@ -32,7 +31,7 @@ type Factory struct {
 var _ vm.Factory = &Factory{}
 
 type Command struct {
-	p2pIface.Command
+	p2p.Command
 	Id   uint32
 	Body []byte
 }

@@ -2,12 +2,6 @@ module github.com/taubyte/vm-plugins
 
 go 1.19
 
-replace (
-	github.com/taubyte/go-sdk => ../go-sdk
-	github.com/taubyte/go-sdk-symbols => ../go-sdk-symbols
-	github.com/taubyte/vm => ../../github/vm
-)
-
 // Taubyte Direct Imports
 require (
 	bitbucket.org/taubyte/go-interfaces v0.2.18

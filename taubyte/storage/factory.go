@@ -1,8 +1,6 @@
 package storage
 
 import (
-	"context"
-
 	storageIface "github.com/taubyte/go-interfaces/services/substrate/storage"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
@@ -32,10 +30,6 @@ func (f *Factory) Close() error {
 	}
 
 	return nil
-}
-
-func (f *Factory) Context() context.Context {
-	return f.ctx
 }
 
 func (f *Factory) Load(hm vm.HostModule) (err error) {

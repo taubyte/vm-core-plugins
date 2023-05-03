@@ -2,7 +2,7 @@ package pubsub
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
@@ -22,7 +22,7 @@ func (f *Factory) W_publishToChannel(ctx context.Context, module common.Module,
 
 	readCloser := memory.New(f.ctx, module.Memory(), bodyPtr, bodySize)
 	defer readCloser.Close()
-	data, err0 := ioutil.ReadAll(readCloser)
+	data, err0 := io.ReadAll(readCloser)
 	if err0 != nil {
 		return errno.ErrorEOF
 	}

@@ -1,8 +1,6 @@
 package fifo
 
 import (
-	"context"
-
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
 )
@@ -18,10 +16,6 @@ func (f *Factory) Name() string {
 func (f *Factory) Close() error {
 	f.fifoMap = nil
 	return nil
-}
-
-func (f *Factory) Context() context.Context {
-	return f.ctx
 }
 
 func (f *Factory) Load(hm vm.HostModule) (err error) {
