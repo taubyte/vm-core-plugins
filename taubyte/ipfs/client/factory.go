@@ -1,7 +1,7 @@
 package client
 
 import (
-	"bitbucket.org/taubyte/go-interfaces/services/node/ipfs"
+	"github.com/taubyte/go-interfaces/services/substrate/ipfs"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
 )

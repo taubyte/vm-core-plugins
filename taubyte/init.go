@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"bitbucket.org/taubyte/go-interfaces/services/node/ipfs"
 	"github.com/taubyte/go-interfaces/services/substrate/database"
+	"github.com/taubyte/go-interfaces/services/substrate/ipfs"
 	"github.com/taubyte/go-interfaces/services/substrate/p2p"
 	"github.com/taubyte/go-interfaces/services/substrate/pubsub"
 	"github.com/taubyte/go-interfaces/services/substrate/storage"

@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"bitbucket.org/taubyte/go-interfaces/services/node/ipfs"
 	"github.com/ipfs/go-cid"
+	"github.com/taubyte/go-interfaces/services/substrate/ipfs"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
 )

@@ -4,7 +4,6 @@ go 1.19
 
 // Taubyte Direct Imports
 require (
-	bitbucket.org/taubyte/go-interfaces v0.2.18
 	bitbucket.org/taubyte/go-node-database v0.1.7
 	bitbucket.org/taubyte/go-node-http v0.2.12
 	bitbucket.org/taubyte/go-node-p2p v0.1.11
@@ -13,7 +12,6 @@ require (
 	bitbucket.org/taubyte/p2p v0.5.0
 	github.com/taubyte/go-interfaces v0.1.0
 	github.com/taubyte/go-sdk v0.3.7
-	github.com/taubyte/go-sdk-symbols v0.2.5 // indirect
 	github.com/taubyte/go-specs v0.10.0
 
 )
@@ -29,6 +27,7 @@ require (
 
 // Taubyte Inderect Imports
 require (
+	bitbucket.org/taubyte/go-interfaces v0.2.18 // indirect
 	bitbucket.org/taubyte/go-moody-blues v0.1.33 // indirect
 	bitbucket.org/taubyte/go-node-tvm v0.1.12-pre // indirect
 	bitbucket.org/taubyte/go-specs v0.1.7 // indirect
@@ -38,6 +37,7 @@ require (
 	github.com/taubyte/domain-validation v1.0.0 // indirect
 	github.com/taubyte/go-doci v1.0.2 // indirect
 	github.com/taubyte/go-sdk-smartops v0.1.3 // indirect
+	github.com/taubyte/go-sdk-symbols v0.2.5 // indirect
 	github.com/taubyte/utils v0.1.5 // indirect
 )
 
