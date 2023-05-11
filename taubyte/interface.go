@@ -5,9 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"bitbucket.org/taubyte/p2p/streams/command"
-	"bitbucket.org/taubyte/p2p/streams/command/response"
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
+	"github.com/taubyte/go-interfaces/p2p/streams"
 
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/event"
@@ -22,7 +21,7 @@ type eventApi interface {
 
 	CreateHttpEvent(w http.ResponseWriter, r *http.Request) *event.Event
 	CreatePubsubEvent(msg *pubsub.Message) *event.Event
-	CreateP2PEvent(cmd *command.Command, response response.Response) *event.Event
+	CreateP2PEvent(cmd streams.Command, response streams.Response) *event.Event
 }
 
 var With = func(pi vm.PluginInstance) (Instance, error) {
