@@ -3,6 +3,7 @@ package taubyte
 import (
 	"context"
 	"errors"
+	"sync"
 
 	"github.com/taubyte/go-interfaces/services/substrate/database"
 	"github.com/taubyte/go-interfaces/services/substrate/ipfs"
@@ -105,8 +106,13 @@ func Plugin() vm.Plugin {
 	return _plugin
 }
 
+var initializeLock sync.Mutex
+
 // First initialize the plugin
 func Initialize(ctx context.Context, options ...Option) error {
+	initializeLock.Lock()
+	defer initializeLock.Unlock()
+
 	if _plugin != nil {
 		return nil
 	}

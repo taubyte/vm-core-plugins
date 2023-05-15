@@ -27,10 +27,10 @@ func (f *Factory) W_getP2PEventDataSize(ctx context.Context, module common.Modul
 		return err
 	}
 
-	_data, ok := data.cmd.Body["data"]
+	_data, ok := data.cmd.Get("data")
 	if !ok {
 		var err0 error
-		data.marshalledData, err0 = json.Marshal(data.cmd.Body)
+		data.marshalledData, err0 = json.Marshal(data.cmd.Raw())
 		if err0 != nil {
 			return errno.ErrorMarshalDataFailed
 		}

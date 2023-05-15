@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"runtime/debug"
 
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
 	"github.com/taubyte/go-interfaces/p2p/streams"
@@ -27,7 +28,8 @@ type eventApi interface {
 var With = func(pi vm.PluginInstance) (Instance, error) {
 	_pi, ok := pi.(*pluginInstance)
 	if !ok {
-		return nil, fmt.Errorf("type %T is not a Taubyte plugin instance", pi)
+		debug.PrintStack()
+		return nil, fmt.Errorf("%v of type %T is not a Taubyte plugin instance", pi, pi)
 	}
 	err := _pi.LoadAPIs()
 	if err != nil {
@@ -37,6 +39,8 @@ var With = func(pi vm.PluginInstance) (Instance, error) {
 	return _pi, nil
 }
 
+var _ eventApi = &event.Factory{}
+
 func (i *pluginInstance) LoadAPIs() error {
 	var ok bool
 	for _, factory := range i.factories {
@@ -44,7 +48,7 @@ func (i *pluginInstance) LoadAPIs() error {
 		case "event":
 			i.eventApi, ok = factory.(eventApi)
 			if !ok {
-				return fmt.Errorf("factory `%s` not of type `eventApi`", factory.Name())
+				return fmt.Errorf("factory `%s` not of type `eventApi` but `%T`", factory.Name(), factory)
 			}
 		}
 	}

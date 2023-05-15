@@ -13,15 +13,14 @@ func (f *Factory) W_getP2PEventCommand(ctx context.Context, module common.Module
 		return err
 	}
 
-	_command, ok := data.cmd.Body["command"]
+	_command, ok := data.cmd.Get("command")
 	if ok {
-		data.cmd.Command, ok = _command.(string)
-		if !ok {
+		if err := data.cmd.SetName(_command); err != nil {
 			return errno.ErrorP2PCommandNotFound
 		}
 	}
 
-	return f.WriteString(module, dataPtr, data.cmd.Command)
+	return f.WriteString(module, dataPtr, data.cmd.Name())
 }
 
 func (f *Factory) W_getP2PEventCommandSize(ctx context.Context, module common.Module, eventId, sizePtr uint32) errno.Error {
@@ -30,13 +29,12 @@ func (f *Factory) W_getP2PEventCommandSize(ctx context.Context, module common.Mo
 		return err
 	}
 
-	_command, ok := data.cmd.Body["command"]
+	_command, ok := data.cmd.Get("command")
 	if ok {
-		data.cmd.Command, ok = _command.(string)
-		if !ok {
+		if err := data.cmd.SetName(_command); err != nil {
 			return errno.ErrorP2PCommandNotFound
 		}
 	}
 
-	return f.WriteStringSize(module, sizePtr, data.cmd.Command)
+	return f.WriteStringSize(module, sizePtr, data.cmd.Name())
 }

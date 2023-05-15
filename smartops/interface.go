@@ -20,7 +20,7 @@ type resourceApi interface {
 var With = func(pi vm.PluginInstance) (Instance, error) {
 	_pi, ok := pi.(*pluginInstance)
 	if !ok {
-		return nil, fmt.Errorf("type %T is not a Taubyte plugin instance", pi)
+		return nil, fmt.Errorf("%v of type %T is not a Taubyte plugin instance", pi, pi)
 	}
 
 	err := _pi.LoadAPIs()

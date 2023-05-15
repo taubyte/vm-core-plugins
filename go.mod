@@ -2,17 +2,87 @@ module github.com/taubyte/vm-plugins
 
 go 1.19
 
+replace github.com/ipfs/go-block-format => github.com/ipfs/go-block-format v0.1.1
+
+replace bitbucket.org/taubyte/p2p => ../p2p
+
+replace bitbucket.org/taubyte/go-moody-blues => ../go-moody-blues
+
+replace github.com/taubyte/go-interfaces => ../go-interfaces
+
+replace bitbucket.org/taubyte/seer-p2p-client => ../seer-p2p-client
+
+replace bitbucket.org/taubyte/dreamland => ../dreamland
+
+replace bitbucket.org/taubyte/tns => ../tns
+
+replace bitbucket.org/taubyte/auth => ../auth
+
+replace bitbucket.org/taubyte/node => ../node
+
+replace bitbucket.org/taubyte/billing => ../billing
+
+replace bitbucket.org/taubyte/hoarder => ../hoarder
+
+replace bitbucket.org/taubyte/patrick => ../patrick
+
+replace bitbucket.org/taubyte/monkey => ../monkey
+
+replace bitbucket.org/taubyte/seer => ../seer
+
+replace bitbucket.org/taubyte/console => ../console
+
+replace bitbucket.org/taubyte/kvdb => ../kvdb
+
+replace bitbucket.org/taubyte/tns-p2p-client => ../tns-p2p-client
+
+replace bitbucket.org/taubyte/config-compiler => ../config-compiler
+
+replace bitbucket.org/taubyte/go-node-counters => ../go-node-counters
+
+replace bitbucket.org/taubyte/go-node-database => ../go-node-database
+
+replace bitbucket.org/taubyte/go-node-http => ../go-node-http
+
+replace bitbucket.org/taubyte/go-node-ipfs => ../go-node-ipfs
+
+replace bitbucket.org/taubyte/go-node-p2p => ../go-node-p2p
+
+replace bitbucket.org/taubyte/go-node-pubsub => ../go-node-pubsub
+
+replace bitbucket.org/taubyte/go-node-smartops => ../go-node-smartops
+
+replace bitbucket.org/taubyte/go-node-storage => ../go-node-storage
+
+replace bitbucket.org/taubyte/go-node-tvm => ../go-node-tvm
+
+replace bitbucket.org/taubyte/http-auto => ../http-auto
+
+replace bitbucket.org/taubyte/go-builder => ../go-builder
+
+replace github.com/taubyte/vm-plugins => ../vm-plugins
+
+replace github.com/taubyte/vm => ../vm
+
+replace github.com/taubyte/utils => ../utils
+
+replace github.com/taubyte/go-specs => ../go-specs
+
+replace bitbucket.org/taubyte/vm-test-examples => ../vm-test-examples
+
+replace bitbucket.org/taubyte/dreamland-test => ../dreamland-test
+
 // Taubyte Direct Imports
 require (
-	bitbucket.org/taubyte/go-node-database v0.1.7
-	bitbucket.org/taubyte/go-node-http v0.2.12
-	bitbucket.org/taubyte/go-node-p2p v0.1.11
-	bitbucket.org/taubyte/go-node-pubsub v0.2.9
-	bitbucket.org/taubyte/go-node-storage v0.1.6
-	bitbucket.org/taubyte/p2p v0.5.0
-	github.com/taubyte/go-interfaces v0.1.0
+	bitbucket.org/taubyte/go-node-database v0.1.9
+	bitbucket.org/taubyte/go-node-http v0.2.13
+	bitbucket.org/taubyte/go-node-p2p v0.1.13
+	bitbucket.org/taubyte/go-node-pubsub v0.2.10
+	bitbucket.org/taubyte/go-node-storage v0.1.7
+	bitbucket.org/taubyte/p2p v0.6.0 // indirect
+	github.com/taubyte/go-interfaces v0.2.20
 	github.com/taubyte/go-sdk v0.3.7
-	github.com/taubyte/go-specs v0.10.0
+	github.com/taubyte/go-specs v0.10.1
 
 )
 
@@ -27,13 +97,10 @@ require (
 
 // Taubyte Inderect Imports
 require (
-	bitbucket.org/taubyte/go-interfaces v0.2.18 // indirect
+	bitbucket.org/taubyte/go-interfaces v0.2.20 // indirect
 	bitbucket.org/taubyte/go-moody-blues v0.1.33 // indirect
-	bitbucket.org/taubyte/go-node-tvm v0.1.12-pre // indirect
-	bitbucket.org/taubyte/go-specs v0.1.7 // indirect
-	bitbucket.org/taubyte/http v0.3.0 // indirect
-	bitbucket.org/taubyte/kvdb v0.2.0 // indirect
-	bitbucket.org/taubyte/vm v0.3.11-pre // indirect
+	bitbucket.org/taubyte/go-node-tvm v0.1.12 // indirect
+	bitbucket.org/taubyte/kvdb v0.2.1 // indirect
 	github.com/taubyte/domain-validation v1.0.0 // indirect
 	github.com/taubyte/go-doci v1.0.2 // indirect
 	github.com/taubyte/go-sdk-smartops v0.1.3 // indirect
@@ -224,4 +291,10 @@ require (
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
 	lukechampine.com/blake3 v1.1.7 // indirect
 	nhooyr.io/websocket v1.8.7 // indirect
+)
+
+require (
+	github.com/ipfs/go-ds-crdt v0.3.10 // indirect
+	github.com/taubyte/http v0.9.0 // indirect
+	github.com/taubyte/vm v0.1.0 // indirect
 )
