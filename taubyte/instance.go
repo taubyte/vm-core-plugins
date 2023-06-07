@@ -42,7 +42,7 @@ func (p *plugin) New(instance vm.Instance) (vm.PluginInstance, error) {
 		instance: instance,
 		factories: []vm.Factory{
 			event.New(instance, helperMethods),
-			ethereum.New(instance, helperMethods),
+			ethereum.New(instance, p.pubsubNode, helperMethods),
 			client.New(instance, helperMethods),
 			ipfsClient.New(instance, p.ipfsNode, helperMethods),
 			pubsub.New(instance, p.pubsubNode, helperMethods),
