@@ -2,10 +2,13 @@ package ethereum
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/rpc"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
+	sdkRpc "github.com/taubyte/go-sdk/ethereum/client/rpc"
 )
 
 func (f *Factory) generateClientId() uint32 {
@@ -30,21 +33,44 @@ func (f *Factory) getClient(clientId uint32) (*Client, errno.Error) {
 func (f *Factory) W_ethNew(ctx context.Context, module common.Module,
 	clientIdPtr,
 	urlPtr,
-	urlLen uint32,
+	urlLen,
+	optionsPtr,
+	optionsSize uint32,
 ) errno.Error {
 	url, err0 := f.ReadString(module, urlPtr, urlLen)
 	if err0 != 0 {
 		return err0
 	}
 
-	client, err := ethclient.Dial(url)
+	var dialOptions []byte
+	if optionsSize > 0 {
+		dialOptions, err0 = f.ReadBytes(module, optionsPtr, optionsSize)
+		if err0 != 0 {
+			return err0
+		}
+	}
+
+	rpcOpts := make([]rpc.ClientOption, 0)
+
+	opts := sdkRpc.DialOptions{}
+	if len(dialOptions) > 0 {
+		if err := opts.UnmarshalJSON(dialOptions); err != nil {
+			return errno.ErrorEthereumRPCOptionUnmarshalFailed
+		}
+	}
+
+	if len(opts.Headers) > 0 {
+		rpcOpts = append(rpcOpts, rpc.WithHeaders(http.Header(opts.Headers)))
+	}
+
+	rpcClient, err := rpc.DialOptions(f.ctx, url, rpcOpts...)
 	if err != nil {
 		return errno.ErrorEthereumNewClient
 	}
 
 	c := Client{
 		Id:        f.generateClientId(),
-		Client:    client,
+		Client:    ethclient.NewClient(rpcClient),
 		blocks:    make(map[uint64]*Block),
 		contracts: make(map[uint32]*Contract),
 	}

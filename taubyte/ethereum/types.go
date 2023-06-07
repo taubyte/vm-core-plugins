@@ -2,12 +2,14 @@ package ethereum
 
 import (
 	"context"
+	"reflect"
 	"sync"
 
+	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
-
+	pubsubIface "github.com/taubyte/go-interfaces/services/substrate/pubsub"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-plugins/taubyte/helpers"
 )
@@ -15,6 +17,7 @@ import (
 type Factory struct {
 	helpers.Methods
 	parent          vm.Instance
+	pubsubNode      pubsubIface.Service
 	ctx             context.Context
 	clients         map[uint32]*Client
 	clientsLock     sync.RWMutex
@@ -47,10 +50,12 @@ type Transaction struct {
 
 type Contract struct {
 	*bind.BoundContract
-	clientId           uint32
+	client             *Client
 	Id                 uint32
+	abi                *abi.ABI
 	methods            map[string]*contractMethod
-	methodsLock        sync.RWMutex
+	events             map[string]*contractEvent
+	eventsLock         sync.RWMutex
 	transactions       map[uint32]*Transaction
 	transactionsLock   sync.RWMutex
 	transactionsToGrab uint32
@@ -61,4 +66,17 @@ type contractMethod struct {
 	outputs  []string
 	constant bool
 	data     [][]byte
+}
+
+type contractEvent struct {
+	parent     *Contract
+	event      abi.Event
+	structType reflect.Type
+	watcher    *contractWatcher
+}
+
+type contractWatcher struct {
+	lastBlock uint64
+	lock      sync.RWMutex
+	published map[string]map[uint64]map[uint]struct{}
 }

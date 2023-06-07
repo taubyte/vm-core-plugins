@@ -18,18 +18,19 @@ func (f *Factory) GetResource(resourceId uint32) (*plCommon.Resource, errno.Erro
 	return nil, errno.SmartOpErrorResourceNotFound
 }
 
+// TODO: FIXME this breaks smartops
 func (f *Factory) GetEvent(resourceId uint32) (*event.Event, errno.Error) {
-	resource, err := f.GetResource(resourceId)
-	if err != 0 {
-		return nil, err
-	}
+	// resource, err := f.GetResource(resourceId)
+	// if err != 0 {
+	// 	return nil, err
+	// }
 
-	e, ok := resource.Caller.Event().(*event.Event)
-	if !ok {
-		return nil, errno.ErrorEventNotFound
-	}
+	// e, ok := resource.Caller.Event().(*event.Event)
+	// if !ok {
+	return nil, errno.ErrorEventNotFound
+	// }
 
-	return e, 0
+	// return e, 0
 }
 
 func (f *Factory) W_getEventId(ctx context.Context, module vm.Module, resourceId uint32, eventIdPtr uint32) errno.Error {
