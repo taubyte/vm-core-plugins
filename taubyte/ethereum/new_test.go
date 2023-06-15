@@ -1,12 +1,13 @@
 package ethereum
 
 import (
-	"context"
+	"fmt"
+	"strings"
 	"testing"
 )
 
 func TestXxx(t *testing.T) {
-	_, ctxC := context.WithCancel(context.TODO())
-	ctxC()
-	ctxC()
+	channel := "pubsub://mint"
+	fmt.Printf("`%s`", strings.SplitAfterN(channel, "://", 2)[1])
+
 }

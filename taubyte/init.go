@@ -3,6 +3,7 @@ package taubyte
 import (
 	"context"
 	"errors"
+	"fmt"
 	"sync"
 
 	"github.com/taubyte/go-interfaces/services/substrate/database"
@@ -23,78 +24,102 @@ type plugin struct {
 	p2pNode      p2p.Service
 }
 
-var _plugin *plugin
+var (
+	_plugin      *plugin
+	errNilPlugin = errors.New("plugin is nil, need to initialize")
+)
 
 type Option func() error
 
+func (p *plugin) setNode(nodeService interface{}) error {
+	if nodeService == nil {
+		return errors.New("node service is nil")
+	}
+
+	switch service := nodeService.(type) {
+	case ipfs.Service:
+		p.ipfsNode = service
+	case pubsub.Service:
+		p.pubsubNode = service
+	case database.Service:
+		p.databaseNode = service
+	case storage.Service:
+		p.storageNode = service
+	case p2p.Service:
+		p.p2pNode = service
+	default:
+		return errors.New("not a valid node service")
+	}
+	return nil
+}
+
 func IpfsNode(node ipfs.Service) Option {
-	return func() error {
+	return func() (err error) {
 		if _plugin == nil {
-			return errors.New("ipfsNode option failed, plugin is nill")
-		}
-		if node == nil {
-			return errors.New("ipfsNode option failed, node is nill")
+			return errNilPlugin
 		}
 
-		_plugin.ipfsNode = node
-		return nil
+		if err = _plugin.setNode(node); err != nil {
+			return fmt.Errorf("setting ipfs node failed with: %w", err)
+		}
+
+		return
 	}
 }
 
 func PubsubNode(node pubsub.Service) Option {
-	return func() error {
+	return func() (err error) {
 		if _plugin == nil {
-			return errors.New("pubsubNode option failed, plugin is nill")
-		}
-		if node == nil {
-			return errors.New(" pubsubNode option failed, node is nill")
+			return errNilPlugin
 		}
 
-		_plugin.pubsubNode = node
-		return nil
+		if err = _plugin.setNode(node); err != nil {
+			return fmt.Errorf("setting pubsub node failed with: %w", err)
+		}
+
+		return
 	}
 }
 
 func DatabaseNode(node database.Service) Option {
-	return func() error {
+	return func() (err error) {
 		if _plugin == nil {
-			return errors.New("databaseNode option failed, plugin is nill")
+			return errNilPlugin
 		}
 
-		if node == nil {
-			return errors.New("databaseNode option failed, node is nill")
+		if err = _plugin.setNode(node); err != nil {
+			return fmt.Errorf("setting database node failed with: %w", err)
 		}
 
-		_plugin.databaseNode = node
-		return nil
+		return
 	}
 }
 
 func StorageNode(node storage.Service) Option {
-	return func() error {
+	return func() (err error) {
 		if _plugin == nil {
-			return errors.New("storageNode option failed, plugin is nill")
-		}
-		if node == nil {
-			return errors.New("storageNode option failed, node is nill")
+			return errNilPlugin
 		}
 
-		_plugin.storageNode = node
-		return nil
+		if err = _plugin.setNode(node); err != nil {
+			return fmt.Errorf("setting storage node failed with: %w", err)
+		}
+
+		return
 	}
 }
 
 func P2PNode(node p2p.Service) Option {
-	return func() error {
+	return func() (err error) {
 		if _plugin == nil {
-			return errors.New("p2pNode option failed, plugin is nill")
-		}
-		if node == nil {
-			return errors.New("p2pNode option failed, node is nill")
+			return errNilPlugin
 		}
 
-		_plugin.p2pNode = node
-		return nil
+		if err = _plugin.setNode(node); err != nil {
+			return fmt.Errorf("setting p2p node failed with: %w", err)
+		}
+
+		return
 	}
 }
 
@@ -113,25 +138,22 @@ func Initialize(ctx context.Context, options ...Option) error {
 	initializeLock.Lock()
 	defer initializeLock.Unlock()
 
-	if _plugin != nil {
-		return nil
-	}
+	if _plugin == nil {
+		_plugin = &plugin{}
+		_plugin.ctx, _plugin.ctxC = context.WithCancel(ctx)
 
-	_plugin = &plugin{}
-
-	_plugin.ctx, _plugin.ctxC = context.WithCancel(ctx)
-
-	for _, opt := range options {
-		if err := opt(); err != nil {
-			return err
+		for _, opt := range options {
+			if err := opt(); err != nil {
+				return err
+			}
 		}
-	}
 
-	go func() {
-		<-_plugin.ctx.Done()
-		_plugin.ctxC()
-		_plugin = nil
-	}()
+		go func() {
+			<-_plugin.ctx.Done()
+			_plugin.ctxC()
+			_plugin = nil
+		}()
+	}
 
 	return nil
 }

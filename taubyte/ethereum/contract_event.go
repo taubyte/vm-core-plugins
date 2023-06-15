@@ -22,6 +22,26 @@ import (
 	"github.com/taubyte/go-sdk/ethereum/client/logs"
 )
 
+type channelType uint32
+
+const (
+	httpChannel channelType = iota
+	pubsubChannel
+	p2pChannel
+)
+
+func channelTypeFromPrefix(channel string) (channelType channelType, _channel string) {
+	if strings.HasPrefix(channel, "http") {
+		channelType = httpChannel
+	} else if strings.HasPrefix(channel, "pubsub") {
+		channelType = pubsubChannel
+	} else if strings.HasPrefix(channel, "p2p") {
+		channelType = p2pChannel
+	}
+
+	return channelType, strings.SplitAfterN(channel, "://", 2)[1]
+}
+
 func (f *Factory) W_ethSubscribeContractEvent(
 	ctx context.Context,
 	module vm.Module,
@@ -72,13 +92,18 @@ func (f *Factory) W_ethSubscribeContractEvent(
 		ce.watcher.lock.Unlock()
 	}
 
+	channelType, channel := channelTypeFromPrefix(channel)
+	switch channelType {
+	case httpChannel:
+	case pubsubChannel:
+		if err := f.pubsubNode.Subscribe(f.parent.Context().Project(), f.parent.Context().Application(), channel); err != nil {
+			return errno.ErrorSubscribeFailed
+		}
+	default:
+		return errno.ErrorSubscribeFailed
+	}
+
 	//TODO: implement query
-
-	//TODO: Reimplement whe supporting pubsub
-	// if err := f.pubsubNode.Subscribe(f.parent.Context().Project(), f.parent.Context().Application(), channel); err != nil {
-	// 	return errno.ErrorSubscribeFailed
-	// }
-
 	_ctx, _ctxC := context.WithTimeout(context.Background(), time.Duration(ttl)*time.Second)
 
 	// Check if there is an error with watching
@@ -96,7 +121,7 @@ func (f *Factory) W_ethSubscribeContractEvent(
 				_ctxC()
 				return
 			default:
-				if err := handleLogChannels(vmCtx, _ctx, 5, pubsubNode, ce, channel); err != nil {
+				if err := handleLogChannels(vmCtx, _ctx, 5, pubsubNode, ce, channel, channelType); err != nil {
 					if errors.Is(err, errWatch) {
 						// if watch failed after passing once exit
 						return
@@ -110,7 +135,7 @@ func (f *Factory) W_ethSubscribeContractEvent(
 	return 0
 }
 
-func publish(vmCtx vm.Context, ctx context.Context, pubsubNode pubsubIface.Service, ce *contractEvent, channel string, logErr error, log *types.Log) error {
+func publish(vmCtx vm.Context, ctx context.Context, pubsubNode pubsubIface.Service, ce *contractEvent, channel string, channelType channelType, logErr error, log *types.Log) error {
 	var _log *logs.Log
 	var _err string
 
@@ -153,23 +178,15 @@ func publish(vmCtx vm.Context, ctx context.Context, pubsubNode pubsubIface.Servi
 		return err
 	}
 
-	if strings.HasPrefix(channel, "http") {
+	switch channelType {
+	case httpChannel:
 		_, err = http.Post(channel, "application/json", bytes.NewBuffer(data))
 		return err
-	} else {
-		// return pubsubNode.Publish(ctx, vmCtx.Project(), vmCtx.Application(), channel, data)
+	case pubsubChannel:
+		return pubsubNode.Publish(ctx, vmCtx.Project(), vmCtx.Application(), channel, data)
+	default:
 		return errors.New("publishing method not implemented")
 	}
-	// switch publishType {
-	// case "http":
-	// 	_, err = http.Post(publishPath, "application/json", bytes.NewBuffer(data))
-	// 	return err
-	// // TODO: Reimplement
-	// // case "pubsub":
-	// // 	return pubsubNode.Publish(ctx, vmCtx.Project(), vmCtx.Application(), channel, data)
-	// default:
-	// 	return errors.New("publishing method not implemented")
-	// }
 }
 
 func watch(ctx context.Context, ce *contractEvent) (logChan chan types.Log, sub event.Subscription, err error) {
@@ -224,7 +241,7 @@ func watch(ctx context.Context, ce *contractEvent) (logChan chan types.Log, sub 
 
 var errWatch = errors.New("watching event failed")
 
-func handleLogChannels(vmCtx vm.Context, ctx context.Context, ttl int64 /*seconds*/, pubsubNode pubsubIface.Service, ce *contractEvent, channel string) error {
+func handleLogChannels(vmCtx vm.Context, ctx context.Context, ttl int64 /*seconds*/, pubsubNode pubsubIface.Service, ce *contractEvent, channel string, channelType channelType) error {
 	logChan, sub, err := watch(ctx, ce)
 	if err != nil {
 		return err
@@ -278,13 +295,16 @@ func handleLogChannels(vmCtx vm.Context, ctx context.Context, ttl int64 /*second
 				ce.watcher.published[channel][log.BlockNumber][log.TxIndex] = struct{}{}
 				ce.watcher.lock.Unlock()
 			}
-			if err = publish(vmCtx, ctx, pubsubNode, ce, channel, nil, &log); err != nil {
-				if err = publish(vmCtx, ctx, pubsubNode, ce, channel, nil, &log); err != nil {
-					publish(vmCtx, ctx, pubsubNode, ce, channel, fmt.Errorf("publishing log failed with: %w", err), nil)
+			if err = publish(vmCtx, ctx, pubsubNode, ce, channel, channelType, nil, &log); err != nil {
+				if err = publish(vmCtx, ctx, pubsubNode, ce, channel, channelType, nil, &log); err != nil {
+					publish(vmCtx, ctx, pubsubNode, ce, channel, channelType, fmt.Errorf("publishing log failed with: %w", err), nil)
 				}
 			}
 
 		case <-logCtx.Done():
+			ce.watcher.lock.Lock()
+			delete(ce.watcher.published, channel)
+			ce.watcher.lock.Unlock()
 			return nil
 		}
 	}

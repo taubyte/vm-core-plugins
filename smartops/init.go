@@ -42,25 +42,22 @@ func Plugin() vm.Plugin {
 
 // First initialize the plugin
 func Initialize(ctx context.Context, options ...Option) error {
-	if _plugin != nil {
-		return nil
-	}
-
-	_plugin = &plugin{}
-
-	_plugin.ctx, _plugin.ctxC = context.WithCancel(ctx)
-
-	for _, opt := range options {
-		if err := opt(); err != nil {
-			return err
+	if _plugin == nil {
+		_plugin = &plugin{}
+		_plugin.ctx, _plugin.ctxC = context.WithCancel(ctx)
+		for _, opt := range options {
+			if err := opt(); err != nil {
+				return err
+			}
 		}
-	}
 
-	go func() {
-		<-_plugin.ctx.Done()
-		_plugin.ctxC()
-		_plugin = nil
-	}()
+		go func() {
+			<-_plugin.ctx.Done()
+			_plugin.ctxC()
+			_plugin = nil
+		}()
+
+	}
 
 	return nil
 }

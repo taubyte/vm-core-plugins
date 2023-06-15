@@ -23,8 +23,7 @@ var With = func(pi vm.PluginInstance) (Instance, error) {
 		return nil, fmt.Errorf("%v of type %T is not a Taubyte plugin instance", pi, pi)
 	}
 
-	err := _pi.LoadAPIs()
-	if err != nil {
+	if err := _pi.LoadAPIs(); err != nil {
 		return nil, err
 	}
 
@@ -32,19 +31,8 @@ var With = func(pi vm.PluginInstance) (Instance, error) {
 }
 
 func (i *pluginInstance) LoadAPIs() error {
-	var ok bool
-	for _, factory := range i.factories {
-		switch factory.Name() {
-		case "resource":
-			i.resourceApi, ok = factory.(resourceApi)
-			if !ok {
-				return fmt.Errorf("factory `%s` not of type `resourceApi`", factory.Name())
-			}
-		}
-	}
-
 	if i.resourceApi == nil {
-		return errors.New("resourceApi not discovered")
+		return errors.New("resourceApi not set")
 	}
 
 	return nil
