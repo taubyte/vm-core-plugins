@@ -29,6 +29,7 @@ replace (
 	bitbucket.org/taubyte/patrick => ../patrick
 	bitbucket.org/taubyte/seer => ../seer
 	bitbucket.org/taubyte/seer-p2p-client => ../seer-p2p-client
+	bitbucket.org/taubyte/spore-drive => ../spore-drive
 	bitbucket.org/taubyte/tns => ../tns
 	bitbucket.org/taubyte/tns-p2p-client => ../tns-p2p-client
 	bitbucket.org/taubyte/vm-test-examples => ../vm-test-examples
@@ -57,13 +58,13 @@ require (
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
 	github.com/taubyte/go-interfaces v0.2.20
 	github.com/taubyte/go-sdk v0.3.8
-	github.com/taubyte/go-specs v0.10.3
+	github.com/taubyte/go-specs v0.10.4
 )
 
 require (
 	bitbucket.org/taubyte/go-node-tvm v0.1.20 // indirect
 	bitbucket.org/taubyte/kvdb v0.2.2-pre // indirect
-	bitbucket.org/taubyte/p2p v0.6.1-pre-v2 // indirect
+	bitbucket.org/taubyte/p2p v0.7.1 // indirect
 	github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137 // indirect
 	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
