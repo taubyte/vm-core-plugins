@@ -7,6 +7,8 @@ replace (
 	bitbucket.org/taubyte/billing => ../billing
 	bitbucket.org/taubyte/config-compiler => ../config-compiler
 	bitbucket.org/taubyte/dreamland => ../dreamland
+	bitbucket.org/taubyte/dreamland-cli => ../dreamland-cli
+	bitbucket.org/taubyte/dreamland-test => ../dreamland-test
 	bitbucket.org/taubyte/go-node-counters => ../go-node-counters
 	bitbucket.org/taubyte/go-node-database => ../go-node-database
 	bitbucket.org/taubyte/go-node-http => ../go-node-http
@@ -20,6 +22,7 @@ replace (
 	bitbucket.org/taubyte/http-auto => ../http-auto
 	bitbucket.org/taubyte/kvdb => ../kvdb
 	bitbucket.org/taubyte/monkey => ../monkey
+	bitbucket.org/taubyte/mycelium => ../mycelium
 	bitbucket.org/taubyte/node => ../node
 	bitbucket.org/taubyte/p2p => ../p2p
 	bitbucket.org/taubyte/patrick => ../patrick
@@ -28,6 +31,7 @@ replace (
 	bitbucket.org/taubyte/tns => ../tns
 	bitbucket.org/taubyte/tns-p2p-client => ../tns-p2p-client
 	bitbucket.org/taubyte/vm-test-examples => ../vm-test-examples
+	github.com/ipfs/go-block-format => github.com/ipfs/go-block-format v0.1.1
 	github.com/taubyte/go-interfaces => ../go-interfaces
 	github.com/taubyte/go-sdk => ../go-sdk
 	github.com/taubyte/go-sdk-symbols => ../go-sdk-symbols
@@ -52,7 +56,7 @@ require (
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
 	github.com/taubyte/go-interfaces v0.2.20
 	github.com/taubyte/go-sdk v0.3.8
-	github.com/taubyte/go-specs v0.10.2-pre
+	github.com/taubyte/go-specs v0.10.3
 )
 
 require (
@@ -116,6 +120,7 @@ require (
 	github.com/ipfs/go-ipld-cbor v0.0.6 // indirect
 	github.com/ipfs/go-ipld-format v0.4.0 // indirect
 	github.com/ipfs/go-ipld-legacy v0.1.1 // indirect
+	github.com/ipfs/go-libipfs v0.6.2 // indirect
 	github.com/ipfs/go-log v1.0.5 // indirect
 	github.com/ipfs/go-log/v2 v2.5.1 // indirect
 	github.com/ipfs/go-metrics-interface v0.0.1 // indirect
