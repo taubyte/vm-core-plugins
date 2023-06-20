@@ -6,6 +6,7 @@ replace (
 	bitbucket.org/taubyte/auth => ../auth
 	bitbucket.org/taubyte/billing => ../billing
 	bitbucket.org/taubyte/config-compiler => ../config-compiler
+	bitbucket.org/taubyte/console => ../console
 	bitbucket.org/taubyte/dreamland => ../dreamland
 	bitbucket.org/taubyte/dreamland-cli => ../dreamland-cli
 	bitbucket.org/taubyte/dreamland-test => ../dreamland-test
@@ -27,6 +28,7 @@ replace (
 	bitbucket.org/taubyte/node => ../node
 	bitbucket.org/taubyte/p2p => ../p2p
 	bitbucket.org/taubyte/patrick => ../patrick
+	bitbucket.org/taubyte/q-node => ../q-node
 	bitbucket.org/taubyte/seer => ../seer
 	bitbucket.org/taubyte/seer-p2p-client => ../seer-p2p-client
 	bitbucket.org/taubyte/spore-drive => ../spore-drive
