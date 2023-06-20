@@ -58,9 +58,9 @@ require (
 	github.com/ipfs/go-datastore v0.6.0
 	github.com/libp2p/go-libp2p v0.27.5
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
-	github.com/taubyte/go-interfaces v0.2.20
+	github.com/taubyte/go-interfaces v0.2.0-pre
 	github.com/taubyte/go-sdk v0.3.8
-	github.com/taubyte/go-specs v0.10.4
+	github.com/taubyte/go-specs v0.10.5-pre
 )
 
 require (
@@ -192,8 +192,8 @@ require (
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/taubyte/domain-validation v1.0.0 // indirect
 	github.com/taubyte/go-sdk-smartops v0.1.3 // indirect
-	github.com/taubyte/utils v0.1.6-pre // indirect
-	github.com/taubyte/vm v0.1.1-pre // indirect
+	github.com/taubyte/utils v0.1.6-pre.v2 // indirect
+	github.com/taubyte/vm v0.2.0-pre // indirect
 	github.com/tklauser/go-sysconf v0.3.11 // indirect
 	github.com/tklauser/numcpus v0.6.0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
