@@ -2,57 +2,12 @@ module github.com/taubyte/vm-plugins
 
 go 1.19
 
-replace (
-	bitbucket.org/taubyte/auth => ../auth
-	bitbucket.org/taubyte/billing => ../billing
-	bitbucket.org/taubyte/config-compiler => ../config-compiler
-	bitbucket.org/taubyte/console => ../console
-	bitbucket.org/taubyte/dreamland => ../dreamland
-	bitbucket.org/taubyte/dreamland-cli => ../dreamland-cli
-	bitbucket.org/taubyte/dreamland-test => ../dreamland-test
-	bitbucket.org/taubyte/go-dreamland-http => ../go-dreamland-http
-	bitbucket.org/taubyte/go-node-counters => ../go-node-counters
-	bitbucket.org/taubyte/go-node-database => ../go-node-database
-	bitbucket.org/taubyte/go-node-http => ../go-node-http
-	bitbucket.org/taubyte/go-node-ipfs => ../go-node-ipfs
-	bitbucket.org/taubyte/go-node-p2p => ../go-node-p2p
-	bitbucket.org/taubyte/go-node-pubsub => ../go-node-pubsub
-	bitbucket.org/taubyte/go-node-smartops => ../go-node-smartops
-	bitbucket.org/taubyte/go-node-storage => ../go-node-storage
-	bitbucket.org/taubyte/go-node-tvm => ../go-node-tvm
-	bitbucket.org/taubyte/hoarder => ../hoarder
-	bitbucket.org/taubyte/http-auto => ../http-auto
-	bitbucket.org/taubyte/kvdb => ../kvdb
-	bitbucket.org/taubyte/monkey => ../monkey
-	bitbucket.org/taubyte/mycelium => ../mycelium
-	bitbucket.org/taubyte/node => ../node
-	bitbucket.org/taubyte/p2p => ../p2p
-	bitbucket.org/taubyte/patrick => ../patrick
-	bitbucket.org/taubyte/q-node => ../q-node
-	bitbucket.org/taubyte/seer => ../seer
-	bitbucket.org/taubyte/seer-p2p-client => ../seer-p2p-client
-	bitbucket.org/taubyte/spore-drive => ../spore-drive
-	bitbucket.org/taubyte/tns => ../tns
-	bitbucket.org/taubyte/tns-p2p-client => ../tns-p2p-client
-	bitbucket.org/taubyte/vm-test-examples => ../vm-test-examples
-	github.com/ipfs/go-block-format => github.com/ipfs/go-block-format v0.1.1
-	github.com/taubyte/go-interfaces => ../go-interfaces
-	github.com/taubyte/go-sdk => ../go-sdk
-	github.com/taubyte/go-sdk-symbols => ../go-sdk-symbols
-	github.com/taubyte/go-specs => ../go-specs
-	github.com/taubyte/http => ../http
-	github.com/taubyte/utils => ../utils
-	github.com/taubyte/vm => ../vm
-	github.com/taubyte/vm-plugins => ../vm-plugins
-	github.com/taubyte/vm-wasm-utils => ../vm-wasm-utils
-)
-
 require (
-	bitbucket.org/taubyte/go-node-database v0.1.10-pre-v2
-	bitbucket.org/taubyte/go-node-http v0.2.18
-	bitbucket.org/taubyte/go-node-p2p v0.1.14-pre-v2
-	bitbucket.org/taubyte/go-node-pubsub v0.2.15
-	bitbucket.org/taubyte/go-node-storage v0.1.8-pre-v2
+	bitbucket.org/taubyte/go-node-database v0.2.0-pre.v2
+	bitbucket.org/taubyte/go-node-http v0.3.1-pre.v2
+	bitbucket.org/taubyte/go-node-p2p v0.2.0-pre.v2
+	bitbucket.org/taubyte/go-node-pubsub v0.3.0-pre.v2
+	bitbucket.org/taubyte/go-node-storage v0.2.0-pre.v2
 	github.com/ethereum/go-ethereum v1.12.0
 	github.com/ipfs/go-cid v0.4.1
 	github.com/ipfs/go-datastore v0.6.0
@@ -64,9 +19,9 @@ require (
 )
 
 require (
-	bitbucket.org/taubyte/go-node-tvm v0.1.20 // indirect
-	bitbucket.org/taubyte/kvdb v0.2.2-pre // indirect
-	bitbucket.org/taubyte/p2p v0.7.1 // indirect
+	bitbucket.org/taubyte/go-node-tvm v0.2.0-pre.v2 // indirect
+	bitbucket.org/taubyte/kvdb v0.4.0-pre // indirect
+	bitbucket.org/taubyte/p2p v0.8.0-pre.v2 // indirect
 	github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137 // indirect
 	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -87,12 +42,14 @@ require (
 	github.com/francoispqt/gojay v1.2.13 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.4.0 // indirect
+	github.com/gin-gonic/gin v1.8.1 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
-	github.com/go-playground/universal-translator v0.18.0 // indirect
+	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
+	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.6.0 // indirect
@@ -122,7 +79,6 @@ require (
 	github.com/ipfs/go-ipld-cbor v0.0.6 // indirect
 	github.com/ipfs/go-ipld-format v0.4.0 // indirect
 	github.com/ipfs/go-ipld-legacy v0.1.1 // indirect
-	github.com/ipfs/go-libipfs v0.6.2 // indirect
 	github.com/ipfs/go-log v1.0.5 // indirect
 	github.com/ipfs/go-log/v2 v2.5.1 // indirect
 	github.com/ipfs/go-metrics-interface v0.0.1 // indirect
@@ -137,7 +93,6 @@ require (
 	github.com/klauspost/compress v1.16.4 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
 	github.com/koron/go-ssdp v0.0.4 // indirect
-	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/libp2p/go-buffer-pool v0.1.0 // indirect
 	github.com/libp2p/go-cidranger v1.1.0 // indirect
 	github.com/libp2p/go-flow-metrics v0.1.0 // indirect
@@ -175,6 +130,7 @@ require (
 	github.com/opencontainers/runtime-spec v1.1.0-rc.1 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58 // indirect
+	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/polydawn/refmt v0.89.0 // indirect
 	github.com/prometheus/client_golang v1.14.0 // indirect
@@ -196,7 +152,6 @@ require (
 	github.com/taubyte/vm v0.2.0-pre // indirect
 	github.com/tklauser/go-sysconf v0.3.11 // indirect
 	github.com/tklauser/numcpus v0.6.0 // indirect
-	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/whyrusleeping/cbor-gen v0.0.0-20230126041949-52956bd4c9aa // indirect
 	github.com/whyrusleeping/chunker v0.0.0-20181014151217-fe64bd25879f // indirect
 	github.com/whyrusleeping/go-keyspace v0.0.0-20160322163242-5b898ac5add1 // indirect
