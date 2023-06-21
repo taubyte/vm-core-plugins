@@ -1,12 +1,12 @@
 package database
 
 import (
-	"bitbucket.org/taubyte/go-node-database/database"
+	"github.com/taubyte/go-interfaces/services/substrate/database"
 
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (d *Database) GetCaller(resourceId uint32) (*database.Database, errno.Error) {
+func (d *Database) GetCaller(resourceId uint32) (database.Database, errno.Error) {
 	resource, err := d.GetResource(resourceId)
 	if err != 0 {
 		return nil, err
@@ -17,7 +17,7 @@ func (d *Database) GetCaller(resourceId uint32) (*database.Database, errno.Error
 
 	db, ok := d.callers[resourceId]
 	if !ok {
-		db, ok = resource.Caller.(*database.Database)
+		db, ok = resource.Caller.(database.Database)
 		if !ok {
 			return nil, errno.SmartOpErrorResourceNotFound
 		}

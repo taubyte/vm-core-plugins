@@ -1,11 +1,11 @@
 package messaging
 
 import (
-	"bitbucket.org/taubyte/go-node-pubsub/messaging"
+	messaging "github.com/taubyte/go-interfaces/services/substrate/pubsub"
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (f *MessagingPubSub) GetCaller(resourceId uint32) (*messaging.Channel, errno.Error) {
+func (f *MessagingPubSub) GetCaller(resourceId uint32) (messaging.Channel, errno.Error) {
 	resource, err := f.GetResource(resourceId)
 	if err != 0 {
 		return nil, err
@@ -16,7 +16,7 @@ func (f *MessagingPubSub) GetCaller(resourceId uint32) (*messaging.Channel, errn
 
 	message, ok := f.callers[resourceId]
 	if !ok {
-		message, ok = resource.Caller.(*messaging.Channel)
+		message, ok = resource.Caller.(messaging.Channel)
 		if !ok {
 			return nil, errno.SmartOpErrorResourceNotFound
 		}

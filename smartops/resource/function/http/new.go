@@ -1,13 +1,13 @@
 package function
 
 import (
-	"bitbucket.org/taubyte/go-node-http/function"
+	funcIface "github.com/taubyte/go-interfaces/services/substrate/http"
 	"github.com/taubyte/vm-plugins/smartops/common"
 )
 
 func New(f common.Factory) *FunctionHttp {
 	return &FunctionHttp{
 		Factory: f,
-		callers: make(map[uint32]*function.Function),
+		callers: make(map[uint32]funcIface.Function),
 	}
 }

@@ -3,7 +3,7 @@ package website
 import (
 	"sync"
 
-	"bitbucket.org/taubyte/go-node-http/website"
+	webIface "github.com/taubyte/go-interfaces/services/substrate/http"
 	"github.com/taubyte/vm-plugins/smartops/common"
 )
 
@@ -11,5 +11,5 @@ type Website struct {
 	common.Factory
 
 	callersLock sync.RWMutex
-	callers     map[uint32]*website.Website
+	callers     map[uint32]webIface.Website
 }

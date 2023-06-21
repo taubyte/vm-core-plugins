@@ -1,11 +1,11 @@
 package function
 
 import (
-	"bitbucket.org/taubyte/go-node-p2p/function"
+	"github.com/taubyte/go-interfaces/services/substrate/p2p"
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (f *FunctionP2P) GetCaller(resourceId uint32) (*function.Function, errno.Error) {
+func (f *FunctionP2P) GetCaller(resourceId uint32) (p2p.Serviceable, errno.Error) {
 	resource, err := f.GetResource(resourceId)
 	if err != 0 {
 		return nil, err
@@ -16,7 +16,7 @@ func (f *FunctionP2P) GetCaller(resourceId uint32) (*function.Function, errno.Er
 
 	_func, ok := f.callers[resourceId]
 	if !ok {
-		_func, ok = resource.Caller.(*function.Function)
+		_func, ok = resource.Caller.(p2p.Serviceable)
 		if !ok {
 			return nil, errno.SmartOpErrorResourceNotFound
 		}
