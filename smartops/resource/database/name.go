@@ -13,7 +13,7 @@ func (d *Database) W_getDatabaseName(ctx context.Context, module vm.Module, reso
 		return err
 	}
 
-	return d.WriteString(module, dataPtr, db.DbContext.Config.Name)
+	return d.WriteString(module, dataPtr, db.DBContext().Config.Name)
 }
 
 func (d *Database) W_getDatabaseNameSize(ctx context.Context, module vm.Module, resourceId uint32, sizePtr uint32) errno.Error {
@@ -22,5 +22,5 @@ func (d *Database) W_getDatabaseNameSize(ctx context.Context, module vm.Module, 
 		return err
 	}
 
-	return d.WriteStringSize(module, sizePtr, db.DbContext.Config.Name)
+	return d.WriteStringSize(module, sizePtr, db.DBContext().Config.Name)
 }

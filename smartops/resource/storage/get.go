@@ -1,11 +1,11 @@
 package storage
 
 import (
-	"bitbucket.org/taubyte/go-node-storage/storage"
+	"github.com/taubyte/go-interfaces/services/substrate/storage"
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (d *Storage) GetCaller(resourceId uint32) (*storage.Store, errno.Error) {
+func (d *Storage) GetCaller(resourceId uint32) (storage.Storage, errno.Error) {
 	resource, err := d.GetResource(resourceId)
 	if err != 0 {
 		return nil, err
@@ -16,7 +16,7 @@ func (d *Storage) GetCaller(resourceId uint32) (*storage.Store, errno.Error) {
 
 	db, ok := d.callers[resourceId]
 	if !ok {
-		db, ok = resource.Caller.(*storage.Store)
+		db, ok = resource.Caller.(storage.Storage)
 		if !ok {
 			return nil, errno.SmartOpErrorResourceNotFound
 		}

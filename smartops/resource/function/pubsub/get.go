@@ -1,11 +1,11 @@
 package function
 
 import (
-	"bitbucket.org/taubyte/go-node-pubsub/function"
+	"github.com/taubyte/go-interfaces/services/substrate/pubsub"
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (f *FunctionPubSub) GetCaller(resourceId uint32) (*function.Function, errno.Error) {
+func (f *FunctionPubSub) GetCaller(resourceId uint32) (pubsub.Serviceable, errno.Error) {
 	resource, err := f.GetResource(resourceId)
 	if err != 0 {
 		return nil, err
@@ -16,7 +16,7 @@ func (f *FunctionPubSub) GetCaller(resourceId uint32) (*function.Function, errno
 
 	_func, ok := f.callers[resourceId]
 	if !ok {
-		_func, ok = resource.Caller.(*function.Function)
+		_func, ok = resource.Caller.(pubsub.Serviceable)
 		if !ok {
 			return nil, errno.SmartOpErrorResourceNotFound
 		}

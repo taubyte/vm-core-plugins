@@ -7,7 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
-	ether "github.com/taubyte/go-sdk/ethereum/client"
+	eth "github.com/taubyte/go-sdk/ethereum/client/bytes"
 )
 
 func (f *Factory) W_ethSignMessage(
@@ -55,7 +55,7 @@ func (f *Factory) W_ethVerifySignature(
 		return err0
 	}
 
-	signature, err0 := f.ReadBytes(module, signaturePtr, ether.EcdsaSignatureLength)
+	signature, err0 := f.ReadBytes(module, signaturePtr, eth.EcdsaSignatureLength)
 	if err0 != 0 {
 		return err0
 	}

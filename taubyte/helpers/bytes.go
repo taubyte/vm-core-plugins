@@ -24,7 +24,11 @@ func (m *methods) WriteBytesSize(
 	ptr uint32,
 	data []byte,
 ) errno.Error {
-	return m.WriteUint32Le(module, ptr, uint32(len(data)))
+	var size uint32
+	if data != nil {
+		size = uint32(len(data))
+	}
+	return m.WriteUint32Le(module, ptr, size)
 }
 
 func (m *methods) WriteBytes(
@@ -32,6 +36,10 @@ func (m *methods) WriteBytes(
 	ptr uint32,
 	value []byte,
 ) errno.Error {
+	if value == nil {
+		value = make([]byte, 1)
+	}
+
 	ok := module.Memory().Write(ptr, value)
 	if !ok {
 		return errno.ErrorAddressOutOfMemory

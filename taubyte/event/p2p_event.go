@@ -3,21 +3,20 @@ package event
 import (
 	"context"
 
-	"bitbucket.org/taubyte/p2p/streams/command"
-	"bitbucket.org/taubyte/p2p/streams/command/response"
+	"github.com/taubyte/go-interfaces/p2p/streams"
 	common "github.com/taubyte/go-interfaces/vm"
 	sdkCommon "github.com/taubyte/go-sdk/common"
 	"github.com/taubyte/go-sdk/errno"
 )
 
 type P2PData struct {
-	cmd            *command.Command
+	cmd            streams.Command
 	marshalledData []byte
 	protocol       string
-	response       response.Response
+	response       streams.Response
 }
 
-func (f *Factory) CreateP2PEvent(cmd *command.Command, response response.Response) *Event {
+func (f *Factory) CreateP2PEvent(cmd streams.Command, response streams.Response) *Event {
 	e := &Event{
 		Id:   f.generateEventId(),
 		Type: sdkCommon.EventTypeP2P,
@@ -51,8 +50,8 @@ func (f *Factory) W_writeP2PResponse(ctx context.Context, module common.Module, 
 	if err != 0 {
 		return
 	}
-
-	data.response["data"], err = f.ReadBytes(module, bufPtr, bufSize)
+	dataBytes, err := f.ReadBytes(module, bufPtr, bufSize)
+	data.response.Set("data", dataBytes)
 
 	return
 }

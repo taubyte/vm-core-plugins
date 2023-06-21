@@ -1,11 +1,11 @@
 package function
 
 import (
-	"bitbucket.org/taubyte/go-node-http/function"
+	funcIface "github.com/taubyte/go-interfaces/services/substrate/http"
 	"github.com/taubyte/go-sdk/errno"
 )
 
-func (f *FunctionHttp) GetCaller(resourceId uint32) (*function.Function, errno.Error) {
+func (f *FunctionHttp) GetCaller(resourceId uint32) (funcIface.Function, errno.Error) {
 	resource, err := f.GetResource(resourceId)
 	if err != 0 {
 		return nil, err
@@ -16,8 +16,7 @@ func (f *FunctionHttp) GetCaller(resourceId uint32) (*function.Function, errno.E
 
 	_func, ok := f.callers[resourceId]
 	if !ok {
-		_func, ok = resource.Caller.(*function.Function)
-		if !ok {
+		if _func, ok = resource.Caller.(funcIface.Function); !ok {
 			return nil, errno.SmartOpErrorResourceNotFound
 		}
 

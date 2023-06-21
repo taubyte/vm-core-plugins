@@ -3,7 +3,7 @@ package messaging
 import (
 	"sync"
 
-	"bitbucket.org/taubyte/go-node-pubsub/messaging"
+	messaging "github.com/taubyte/go-interfaces/services/substrate/pubsub"
 	"github.com/taubyte/vm-plugins/smartops/common"
 )
 
@@ -11,5 +11,5 @@ type MessagingWebSocket struct {
 	common.Factory
 
 	callersLock sync.RWMutex
-	callers     map[uint32]*messaging.Channel
+	callers     map[uint32]messaging.Messaging
 }

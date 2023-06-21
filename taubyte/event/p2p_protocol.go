@@ -26,7 +26,7 @@ func (f *Factory) W_getP2PEventProtocolSize(ctx context.Context, module common.M
 		return err
 	}
 
-	_protocol, ok := data.cmd.Body["protocol"]
+	_protocol, ok := data.cmd.Get("protocol")
 	if !ok {
 		return errno.ErrorP2PProtocolNotFound
 	}
