@@ -8,7 +8,7 @@ require (
 	github.com/ipfs/go-datastore v0.6.0
 	github.com/libp2p/go-libp2p v0.27.5
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
-	github.com/taubyte/go-interfaces v0.2.0-pre.v2
+	github.com/taubyte/go-interfaces v0.2.2
 	github.com/taubyte/go-sdk v0.3.8
 	github.com/taubyte/go-specs v0.10.5-pre
 )

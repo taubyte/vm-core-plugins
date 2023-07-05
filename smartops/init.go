@@ -36,6 +36,10 @@ func (p *plugin) Name() string {
 	return "taubyte/smartops"
 }
 
+func (p *plugin) Close() error {
+	return nil
+}
+
 func Plugin() vm.Plugin {
 	return _plugin
 }
