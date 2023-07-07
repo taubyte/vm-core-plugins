@@ -37,6 +37,7 @@ func (p *plugin) Name() string {
 }
 
 func (p *plugin) Close() error {
+	p.ctxC()
 	return nil
 }
 
