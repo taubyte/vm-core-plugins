@@ -127,6 +127,11 @@ func (p *plugin) Name() string {
 	return "taubyte/sdk"
 }
 
+func (p *plugin) Close() error {
+	p.ctxC()
+	return nil
+}
+
 func Plugin() vm.Plugin {
 	return _plugin
 }
