@@ -3,7 +3,6 @@ package p2p
 import (
 	"context"
 
-	// "github.com/taubyte/go-interfaces/p2p/streams"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
 	res "github.com/taubyte/p2p/streams/command/response"
