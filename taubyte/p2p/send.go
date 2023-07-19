@@ -3,9 +3,10 @@ package p2p
 import (
 	"context"
 
-	"github.com/taubyte/go-interfaces/p2p/streams"
+	// "github.com/taubyte/go-interfaces/p2p/streams"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
+	res "github.com/taubyte/p2p/streams/command/response"
 )
 
 func (f *Factory) W_sendCommand(ctx context.Context, module common.Module,
@@ -60,7 +61,7 @@ func (f *Factory) W_sendCommandTo(ctx context.Context, module common.Module,
 	return f.handleCommandResponse(module, responseMap, cmd, responseSize)
 }
 
-func (f *Factory) handleCommandResponse(module common.Module, response streams.Response, cmd *Command, responseSize uint32) errno.Error {
+func (f *Factory) handleCommandResponse(module common.Module, response res.Response, cmd *Command, responseSize uint32) errno.Error {
 	data, err := response.Get("data")
 	if err != nil {
 		return errno.ErrorMarshalDataFailed

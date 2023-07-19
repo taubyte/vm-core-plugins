@@ -3,20 +3,22 @@ package event
 import (
 	"context"
 
-	"github.com/taubyte/go-interfaces/p2p/streams"
+	// "github.com/taubyte/go-interfaces/p2p/streams"
 	common "github.com/taubyte/go-interfaces/vm"
 	sdkCommon "github.com/taubyte/go-sdk/common"
 	"github.com/taubyte/go-sdk/errno"
+	"github.com/taubyte/p2p/streams/command"
+	res "github.com/taubyte/p2p/streams/command/response"
 )
 
 type P2PData struct {
-	cmd            streams.Command
+	cmd            command.Command
 	marshalledData []byte
 	protocol       string
-	response       streams.Response
+	response       res.Response
 }
 
-func (f *Factory) CreateP2PEvent(cmd streams.Command, response streams.Response) *Event {
+func (f *Factory) CreateP2PEvent(cmd command.Command, response res.Response) *Event {
 	e := &Event{
 		Id:   f.generateEventId(),
 		Type: sdkCommon.EventTypeP2P,

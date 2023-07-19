@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/smartops/node"
-	"github.com/taubyte/vm-plugins/smartops/resource"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/smartops/node"
+	"github.com/taubyte/vm-core-plugins/smartops/resource"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 type pluginInstance struct {

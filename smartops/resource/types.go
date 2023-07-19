@@ -5,17 +5,17 @@ import (
 	"sync"
 
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/smartops/common"
-	"github.com/taubyte/vm-plugins/smartops/resource/database"
-	functionHttp "github.com/taubyte/vm-plugins/smartops/resource/function/http"
-	functionP2P "github.com/taubyte/vm-plugins/smartops/resource/function/p2p"
-	functionPubSub "github.com/taubyte/vm-plugins/smartops/resource/function/pubsub"
-	messagingPubSub "github.com/taubyte/vm-plugins/smartops/resource/messaging/pubsub"
-	messagingWebSocket "github.com/taubyte/vm-plugins/smartops/resource/messaging/websocket"
-	"github.com/taubyte/vm-plugins/smartops/resource/service"
-	"github.com/taubyte/vm-plugins/smartops/resource/storage"
-	"github.com/taubyte/vm-plugins/smartops/resource/website"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
+	"github.com/taubyte/vm-core-plugins/smartops/resource/database"
+	functionHttp "github.com/taubyte/vm-core-plugins/smartops/resource/function/http"
+	functionP2P "github.com/taubyte/vm-core-plugins/smartops/resource/function/p2p"
+	functionPubSub "github.com/taubyte/vm-core-plugins/smartops/resource/function/pubsub"
+	messagingPubSub "github.com/taubyte/vm-core-plugins/smartops/resource/messaging/pubsub"
+	messagingWebSocket "github.com/taubyte/vm-core-plugins/smartops/resource/messaging/websocket"
+	"github.com/taubyte/vm-core-plugins/smartops/resource/service"
+	"github.com/taubyte/vm-core-plugins/smartops/resource/storage"
+	"github.com/taubyte/vm-core-plugins/smartops/resource/website"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 type Factory struct {

@@ -8,7 +8,7 @@ import (
 	"github.com/ipfs/go-cid"
 	storageIface "github.com/taubyte/go-interfaces/services/substrate/storage"
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 type Factory struct {

@@ -3,7 +3,7 @@ package node
 import (
 	smartOpIface "github.com/taubyte/go-interfaces/services/substrate/smartops"
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 func New(i vm.Instance, service smartOpIface.Service, helper helpers.Methods) *Factory {

@@ -7,10 +7,12 @@ import (
 	"runtime/debug"
 
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
-	"github.com/taubyte/go-interfaces/p2p/streams"
+	// "github.com/taubyte/go-interfaces/p2p/streams"
+	"github.com/taubyte/p2p/streams/command"
+	res "github.com/taubyte/p2p/streams/command/response"
 
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/taubyte/event"
+	"github.com/taubyte/vm-core-plugins/taubyte/event"
 )
 
 type Instance interface {
@@ -22,7 +24,7 @@ type eventApi interface {
 
 	CreateHttpEvent(w http.ResponseWriter, r *http.Request) *event.Event
 	CreatePubsubEvent(msg *pubsub.Message) *event.Event
-	CreateP2PEvent(cmd streams.Command, response streams.Response) *event.Event
+	CreateP2PEvent(cmd command.Command, response res.Response) *event.Event
 }
 
 var With = func(pi vm.PluginInstance) (Instance, error) {

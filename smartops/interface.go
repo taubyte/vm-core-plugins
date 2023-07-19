@@ -6,7 +6,7 @@ import (
 
 	smartOpIface "github.com/taubyte/go-interfaces/services/substrate/smartops"
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/smartops/common"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 
 type Instance interface {
