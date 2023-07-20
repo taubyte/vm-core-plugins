@@ -3,7 +3,7 @@ package function
 import (
 	"sync"
 
-	"github.com/taubyte/go-interfaces/services/substrate/pubsub"
+	"github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
 	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 

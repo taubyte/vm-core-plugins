@@ -1,7 +1,7 @@
 package client
 
 import (
-	"github.com/taubyte/go-interfaces/services/substrate/database"
+	"github.com/taubyte/go-interfaces/services/substrate/components/database"
 	"github.com/taubyte/go-sdk/errno"
 )
 

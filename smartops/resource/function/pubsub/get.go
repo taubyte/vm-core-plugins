@@ -1,7 +1,7 @@
 package function
 
 import (
-	"github.com/taubyte/go-interfaces/services/substrate/pubsub"
+	"github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
 	"github.com/taubyte/go-sdk/errno"
 )
 

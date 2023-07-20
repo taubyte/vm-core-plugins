@@ -1,7 +1,7 @@
 package globals
 
 import (
-	iface "github.com/taubyte/go-interfaces/services/substrate/database"
+	iface "github.com/taubyte/go-interfaces/services/substrate/components/database"
 	"github.com/taubyte/go-sdk/errno"
 )
 

@@ -1,7 +1,7 @@
 package pubsub
 
 import (
-	pubsubIface "github.com/taubyte/go-interfaces/services/substrate/pubsub"
+	pubsubIface "github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )

@@ -6,7 +6,7 @@ import (
 	"sync"
 
 	"github.com/ipfs/go-cid"
-	storageIface "github.com/taubyte/go-interfaces/services/substrate/storage"
+	storageIface "github.com/taubyte/go-interfaces/services/substrate/components/storage"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )

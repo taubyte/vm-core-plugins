@@ -4,7 +4,7 @@ import (
 	"context"
 	"path"
 
-	"github.com/taubyte/go-interfaces/services/substrate/storage"
+	"github.com/taubyte/go-interfaces/services/substrate/components/storage"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
 	storageSpecs "github.com/taubyte/go-specs/storage"

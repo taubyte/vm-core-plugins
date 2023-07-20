@@ -1,7 +1,7 @@
 package function
 
 import (
-	funcIface "github.com/taubyte/go-interfaces/services/substrate/http"
+	funcIface "github.com/taubyte/go-interfaces/services/substrate/components/http"
 	"github.com/taubyte/go-sdk/errno"
 )
 

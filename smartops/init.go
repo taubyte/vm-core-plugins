@@ -4,21 +4,21 @@ import (
 	"context"
 	"errors"
 
-	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate"
 	"github.com/taubyte/go-interfaces/vm"
 )
 
 type plugin struct {
 	ctx         context.Context
 	ctxC        context.CancelFunc
-	smartOpNode smartOps.Service
+	smartOpNode substrate.SmartOpsService
 }
 
 var _plugin *plugin
 
 type Option func() error
 
-func SmartOpNode(node smartOps.Service) Option {
+func SmartOpNode(node substrate.SmartOpsService) Option {
 	return func() error {
 		if _plugin == nil {
 			return errors.New("failed SmartOpNode option, plugin is null")

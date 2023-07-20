@@ -1,7 +1,7 @@
 package storage
 
 import (
-	"github.com/taubyte/go-interfaces/services/substrate/storage"
+	"github.com/taubyte/go-interfaces/services/substrate/components/storage"
 	"github.com/taubyte/go-sdk/errno"
 )
 

@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/taubyte/go-interfaces/services/substrate/database"
+	"github.com/taubyte/go-interfaces/services/substrate/components/database"
 	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 

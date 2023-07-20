@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	smartOpIface "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
@@ -14,7 +14,7 @@ type Instance interface {
 }
 
 type resourceApi interface {
-	CreateSmartOp(caller smartOpIface.SmartOpEventCaller) *common.Resource
+	CreateSmartOp(caller substrate.SmartOpEventCaller) *common.Resource
 }
 
 var With = func(pi vm.PluginInstance) (Instance, error) {
