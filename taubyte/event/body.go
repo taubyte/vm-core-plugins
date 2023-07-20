@@ -3,6 +3,7 @@ package event
 import (
 	"context"
 	"io"
+	"net/http"
 
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
@@ -70,4 +71,18 @@ func (f *Factory) W_eventHttpWrite(ctx context.Context, module common.Module, ev
 	}
 
 	return f.WriteUint32Le(module, wroteN, uint32(n))
+}
+
+func (f *Factory) W_eventHttpFlush(ctx context.Context, module common.Module, eventId uint32) (err errno.Error) {
+	w, err := f.getEventWriter(eventId)
+	if err != 0 {
+		return
+	}
+
+	if flusher, ok := w.(http.Flusher); ok {
+		flusher.Flush()
+		return 0
+	}
+
+	return errno.ErrorHttpWrite
 }
