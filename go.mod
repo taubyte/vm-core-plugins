@@ -2,17 +2,6 @@ module github.com/taubyte/vm-core-plugins
 
 go 1.19
 
-replace (
-	github.com/taubyte/config-compiler => /home/tafkhan/Documents/Work/Taubyte/new/config-compiler
-	github.com/taubyte/dreamland => /home/tafkhan/Documents/Work/Taubyte/new/dreamland
-	github.com/taubyte/go-interfaces => /home/tafkhan/Documents/Work/Taubyte/Repos/go-interfaces
-	github.com/taubyte/http => /home/tafkhan/Documents/Work/Taubyte/Repos/http
-	github.com/taubyte/odo => /home/tafkhan/Documents/Work/Taubyte/new/odo
-	github.com/taubyte/p2p => /home/tafkhan/Documents/Work/Taubyte/new/p2p
-	github.com/taubyte/vm => /home/tafkhan/Documents/Work/Taubyte/Repos/vm
-	github.com/taubyte/vm-core-plugins => /home/tafkhan/Documents/Work/Taubyte/Repos/vm-core-plugins
-)
-
 require (
 	github.com/ethereum/go-ethereum v1.12.0
 	github.com/ipfs/go-cid v0.4.1
@@ -20,10 +9,10 @@ require (
 	github.com/libp2p/go-libp2p v0.27.5
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
 	github.com/pterm/pterm v0.12.33
-	github.com/taubyte/go-interfaces v0.2.3
+	github.com/taubyte/go-interfaces v0.2.6
 	github.com/taubyte/go-sdk v0.3.8
 	github.com/taubyte/go-specs v0.10.5-pre
-	github.com/taubyte/p2p v0.9.0
+	github.com/taubyte/p2p v0.9.1
 )
 
 require (
@@ -167,7 +156,7 @@ require (
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/taubyte/domain-validation v1.0.0 // indirect
-	github.com/taubyte/http v0.10.2 // indirect
+	github.com/taubyte/http v0.10.3 // indirect
 	github.com/taubyte/utils v0.1.6-pre.v2 // indirect
 	github.com/tklauser/go-sysconf v0.3.11 // indirect
 	github.com/tklauser/numcpus v0.6.0 // indirect
