@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/taubyte/go-interfaces/services/substrate/database"
-	"github.com/taubyte/go-interfaces/services/substrate/ipfs"
-	"github.com/taubyte/go-interfaces/services/substrate/p2p"
-	"github.com/taubyte/go-interfaces/services/substrate/pubsub"
-	"github.com/taubyte/go-interfaces/services/substrate/storage"
+	"github.com/taubyte/go-interfaces/services/substrate/components/database"
+	"github.com/taubyte/go-interfaces/services/substrate/components/ipfs"
+	"github.com/taubyte/go-interfaces/services/substrate/components/p2p"
+	"github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
+	"github.com/taubyte/go-interfaces/services/substrate/components/storage"
 	"github.com/taubyte/go-interfaces/vm"
 )
 

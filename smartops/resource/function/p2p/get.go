@@ -1,7 +1,7 @@
 package function
 
 import (
-	"github.com/taubyte/go-interfaces/services/substrate/p2p"
+	"github.com/taubyte/go-interfaces/services/substrate/components/p2p"
 	"github.com/taubyte/go-sdk/errno"
 )
 

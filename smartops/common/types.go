@@ -1,10 +1,10 @@
 package common
 
 import (
-	smartOpIface "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate"
 	"github.com/taubyte/go-sdk/errno"
-	"github.com/taubyte/vm-plugins/taubyte/event"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/taubyte/event"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 type Factory interface {
@@ -15,5 +15,5 @@ type Factory interface {
 
 type Resource struct {
 	Id     uint32
-	Caller smartOpIface.SmartOpEventCaller
+	Caller substrate.SmartOpEventCaller
 }

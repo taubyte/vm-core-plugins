@@ -15,7 +15,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/event"
-	pubsubIface "github.com/taubyte/go-interfaces/services/substrate/pubsub"
+	pubsubIface "github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
 	eth "github.com/taubyte/go-sdk/ethereum/client/bytes"

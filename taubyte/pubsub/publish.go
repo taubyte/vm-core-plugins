@@ -6,7 +6,7 @@ import (
 
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
-	"github.com/taubyte/vm-plugins/taubyte/memory"
+	"github.com/taubyte/vm-core-plugins/taubyte/memory"
 )
 
 func (f *Factory) W_publishToChannel(ctx context.Context, module common.Module,

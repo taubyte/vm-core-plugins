@@ -3,8 +3,8 @@ package messaging
 import (
 	"sync"
 
-	messaging "github.com/taubyte/go-interfaces/services/substrate/pubsub"
-	"github.com/taubyte/vm-plugins/smartops/common"
+	messaging "github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 
 type MessagingWebSocket struct {

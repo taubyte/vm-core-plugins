@@ -3,9 +3,9 @@ package node
 import (
 	"context"
 
-	smartOpIface "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate"
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 type Factory struct {
@@ -13,7 +13,7 @@ type Factory struct {
 	parent vm.Instance
 	ctx    context.Context
 
-	node smartOpIface.Service
+	node substrate.Service
 }
 
 var _ vm.Factory = &Factory{}

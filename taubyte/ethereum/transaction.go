@@ -8,7 +8,7 @@ import (
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
 	"github.com/taubyte/go-sdk/ethereum/client/reflection"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 func (b *Block) getTransaction(transactionId uint32) (*Transaction, errno.Error) {

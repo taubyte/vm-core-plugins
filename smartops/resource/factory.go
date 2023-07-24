@@ -2,8 +2,8 @@ package resource
 
 import (
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/smartops/common"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 var _ common.Factory = &Factory{}

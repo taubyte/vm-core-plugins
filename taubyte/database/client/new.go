@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	databaseIface "github.com/taubyte/go-interfaces/services/substrate/database"
+	databaseIface "github.com/taubyte/go-interfaces/services/substrate/components/database"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
 )

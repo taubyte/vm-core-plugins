@@ -5,8 +5,8 @@ import (
 
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
-	plCommon "github.com/taubyte/vm-plugins/smartops/common"
-	"github.com/taubyte/vm-plugins/taubyte/event"
+	plCommon "github.com/taubyte/vm-core-plugins/smartops/common"
+	"github.com/taubyte/vm-core-plugins/taubyte/event"
 )
 
 func (f *Factory) GetResource(resourceId uint32) (*plCommon.Resource, errno.Error) {

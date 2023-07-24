@@ -3,8 +3,8 @@ package website
 import (
 	"sync"
 
-	webIface "github.com/taubyte/go-interfaces/services/substrate/http"
-	"github.com/taubyte/vm-plugins/smartops/common"
+	webIface "github.com/taubyte/go-interfaces/services/substrate/components/http"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 
 type Website struct {

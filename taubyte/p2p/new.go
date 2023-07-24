@@ -3,7 +3,7 @@ package p2p
 import (
 	"context"
 
-	"github.com/taubyte/go-interfaces/services/substrate/p2p"
+	"github.com/taubyte/go-interfaces/services/substrate/components/p2p"
 	common "github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
 )

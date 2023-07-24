@@ -1,8 +1,8 @@
 package function
 
 import (
-	"github.com/taubyte/go-interfaces/services/substrate/pubsub"
-	"github.com/taubyte/vm-plugins/smartops/common"
+	"github.com/taubyte/go-interfaces/services/substrate/components/pubsub"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 
 func New(f common.Factory) *FunctionPubSub {

@@ -1,9 +1,9 @@
 package p2p
 
 import (
-	p2pIface "github.com/taubyte/go-interfaces/services/substrate/p2p"
+	p2pIface "github.com/taubyte/go-interfaces/services/substrate/components/p2p"
 	"github.com/taubyte/go-interfaces/vm"
-	"github.com/taubyte/vm-plugins/taubyte/helpers"
+	"github.com/taubyte/vm-core-plugins/taubyte/helpers"
 )
 
 func New(i vm.Instance, p2pNode p2pIface.Service, helper helpers.Methods) *Factory {

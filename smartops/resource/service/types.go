@@ -3,8 +3,8 @@ package service
 import (
 	"sync"
 
-	service "github.com/taubyte/go-interfaces/services/substrate/p2p"
-	"github.com/taubyte/vm-plugins/smartops/common"
+	service "github.com/taubyte/go-interfaces/services/substrate/components/p2p"
+	"github.com/taubyte/vm-core-plugins/smartops/common"
 )
 
 type Service struct {
