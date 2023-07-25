@@ -2,6 +2,8 @@ module github.com/taubyte/vm-core-plugins
 
 go 1.19
 
+replace github.com/taubyte/go-interfaces => /home/tafkhan/Documents/Work/Taubyte/Repos/go-interfaces
+
 require (
 	github.com/ethereum/go-ethereum v1.12.0
 	github.com/ipfs/go-cid v0.4.1
