@@ -9,7 +9,7 @@ require (
 	github.com/libp2p/go-libp2p v0.27.5
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
 	github.com/pterm/pterm v0.12.33
-	github.com/taubyte/go-interfaces v0.2.6
+	github.com/taubyte/go-interfaces v0.2.8
 	github.com/taubyte/go-sdk v0.3.8
 	github.com/taubyte/go-specs v0.10.5-pre
 	github.com/taubyte/p2p v0.9.1
