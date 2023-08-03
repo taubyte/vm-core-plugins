@@ -5,6 +5,7 @@ import (
 
 	"github.com/taubyte/go-interfaces/vm"
 	"github.com/taubyte/go-sdk/errno"
+	spec "github.com/taubyte/go-specs/common"
 )
 
 func (f *Factory) W_selfApplicationSize(ctx context.Context, module vm.Module, applicationSizePtr uint32) errno.Error {
@@ -32,11 +33,11 @@ func (f *Factory) W_selfId(ctx context.Context, module vm.Module, functionPtr ui
 }
 
 func (f *Factory) W_selfBranchSize(ctx context.Context, module vm.Module, branchSizePtr uint32) errno.Error {
-	return f.WriteStringSize(module, branchSizePtr, f.parent.Context().Branch())
+	return f.WriteStringSize(module, branchSizePtr, spec.DefaultBranch)
 }
 
 func (f *Factory) W_selfBranch(ctx context.Context, module vm.Module, branchPtr uint32) errno.Error {
-	return f.WriteString(module, branchPtr, f.parent.Context().Branch())
+	return f.WriteString(module, branchPtr, spec.DefaultBranch)
 }
 
 func (f *Factory) W_selfCommitSize(ctx context.Context, module vm.Module, branchSizePtr uint32) errno.Error {
