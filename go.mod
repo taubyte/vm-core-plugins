@@ -2,14 +2,6 @@ module github.com/taubyte/vm-core-plugins
 
 go 1.19
 
-replace (
-	github.com/taubyte/dreamland => ../dreamland
-	github.com/taubyte/go-interfaces => ../go-interfaces
-	github.com/taubyte/http => ../http
-	github.com/taubyte/tau => ../tau
-	github.com/taubyte/vm-core-plugins => ../vm-core-plugins
-)
-
 require (
 	github.com/ethereum/go-ethereum v1.12.0
 	github.com/ipfs/go-cid v0.4.1
@@ -17,7 +9,7 @@ require (
 	github.com/libp2p/go-libp2p v0.27.5
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
 	github.com/pterm/pterm v0.12.33
-	github.com/taubyte/go-interfaces v0.2.8
+	github.com/taubyte/go-interfaces v0.2.12
 	github.com/taubyte/go-sdk v0.3.8
 	github.com/taubyte/go-specs v0.10.6
 	github.com/taubyte/p2p v0.9.1
