@@ -13,7 +13,7 @@ func (f *FunctionP2P) W_getFunctionP2PName(ctx context.Context, module vm.Module
 		return err
 	}
 
-	return f.WriteString(module, dataPtr, _func.Config().Name)
+	return f.WriteString(module, dataPtr, _func.Structure().Name)
 }
 
 func (f *FunctionP2P) W_getFunctionP2PNameSize(ctx context.Context, module vm.Module, resourceId uint32, sizePtr uint32) errno.Error {
@@ -22,5 +22,5 @@ func (f *FunctionP2P) W_getFunctionP2PNameSize(ctx context.Context, module vm.Mo
 		return err
 	}
 
-	return f.WriteStringSize(module, sizePtr, _func.Config().Name)
+	return f.WriteStringSize(module, sizePtr, _func.Structure().Name)
 }
